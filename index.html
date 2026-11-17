@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-PT" data-lang="pt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Portfólio David Carrilho</title>
+<meta name="description" content="David Carrilho, arquiteto. Portfólio de arquitetura 2020—2026: habitação, equipamentos, restauro e fotografia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&amp;display=swap" rel="stylesheet">
+<style>
+/* layout: the printed portfolio as a website — white pages, a running head (name left, 2020—2025. right),
+   text on one side and the plate on the other, a ruled contents list, and drawing-sheet title blocks per project. */
+:root {
+  --paper: #ffffff;     /* the page */
+  --ink: #000000;       /* type, title-block lines */
+  --graphite: #6b6b6b;  /* secondary text, like pencil */
+  --rule: #d6d6d6;      /* hairlines of the contents list */
+  --redline: #d42a1e;   /* redline mark: hover/focus only */
+  --dark: #000000;      /* darkroom band for the film photographs */
+  --display: "Jost", "Futura PT", "Futura", "Century Gothic", "Avenir Next", sans-serif;
+  --body: "Jost", "Futura PT", "Futura", "Century Gothic", "Avenir Next", sans-serif;
+
+  --t-xs: 0.75rem;
+  --t-s: 0.875rem;
+  --t-m: 1.0625rem;
+  --t-l: clamp(1.15rem, 1.4vw, 1.375rem);
+  --t-xl: clamp(1.9rem, 3.2vw, 2.9rem);
+  --t-xxl: clamp(2.6rem, 6vw, 5.5rem);
+
+  --gap: 12px;
+  --gutter: clamp(16px, 4vw, 56px);
+  --max: 1520px;
+  --head: 56px;
+  color-scheme: light;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--head) + 16px); }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 var(--t-m)/1.6 var(--body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; }
+a { color: inherit; text-underline-offset: 0.18em; text-decoration-thickness: 1px; }
+:focus-visible { outline: 2px solid var(--redline); outline-offset: 3px; }
+h1, h2, h3 { font-weight: 300; text-wrap: balance; }
+p { margin: 0; }
+.muted { color: var(--graphite); }
+.wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* language switch */
+:root[data-lang="pt"] [data-l="en"],
+:root[data-lang="en"] [data-l="pt"] { display: none !important; }
+
+.skip { position: absolute; left: -999px; top: 8px; background: var(--paper); padding: 8px 12px; z-index: 50; }
+.skip:focus { left: 8px; }
+
+/* running head */
+.head { position: sticky; top: 0; z-index: 20; background: var(--paper); border-bottom: 1px solid var(--rule); }
+.head-in { display: flex; align-items: center; gap: clamp(14px, 2.4vw, 32px); height: var(--head); font-size: var(--t-s); }
+.brand { font-weight: 500; text-decoration: none; white-space: nowrap; }
+.years { color: var(--graphite); margin-right: auto; white-space: nowrap; }
+.nav { display: flex; gap: clamp(14px, 2vw, 28px); overflow-x: auto; scrollbar-width: none; }
+.nav::-webkit-scrollbar { display: none; }
+.nav a { text-decoration: none; white-space: nowrap; padding-block: 6px; }
+.nav a:hover { text-decoration: underline; }
+.lang {
+  font: 500 var(--t-xs)/1 var(--body); letter-spacing: 0.04em;
+  background: none; color: var(--ink); border: 1px solid var(--ink); padding: 7px 9px; cursor: pointer;
+}
+.lang:hover { background: var(--ink); color: var(--paper); }
+
+/* hero: a spread — text page, plate page */
+.hero {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(28px, 5vw, 88px);
+  padding-block: clamp(36px, 6vw, 88px) clamp(56px, 8vw, 120px);
+}
+.hero-text { container-type: inline-size; display: flex; flex-direction: column; justify-content: space-between; gap: 48px; min-width: 0; }
+.name {
+  margin: 0; font-family: var(--display); font-weight: 300;
+  font-size: clamp(2.8rem, 9vw, 10rem); font-size: clamp(2.6rem, 18.4cqi, 11rem);
+  line-height: 0.88; letter-spacing: -0.015em;
+}
+.hero-foot { display: grid; gap: 28px; max-width: 34em; }
+.role { font-size: var(--t-m); line-height: 1.5; }
+.intro { font-size: var(--t-l); font-weight: 300; line-height: 1.55; }
+.hero-links { display: flex; flex-wrap: wrap; gap: 28px; font-size: var(--t-m); }
+.hero-img { margin: 0; align-self: end; }
+.hero-img img { display: block; height: min(74vh, 860px); width: auto; aspect-ratio: 1287 / 1820; object-fit: cover; }
+.hero-img figcaption, .prints figcaption { font-size: var(--t-xs); color: var(--graphite); margin-top: 10px; }
+
+/* section titles echo the printed chapter pages */
+.sec-title { margin: 0; font-family: var(--display); font-size: var(--t-xxl); line-height: 1; letter-spacing: -0.01em; }
+
+/* contents list */
+.index { padding-block: clamp(48px, 7vw, 96px) clamp(24px, 4vw, 48px); border-top: 1px solid var(--ink); }
+.index .sec-title { margin-bottom: clamp(28px, 4vw, 56px); }
+.idx-cols, .idx-row { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr) minmax(0, 0.55fr); gap: 24px; }
+.idx-cols { font-size: var(--t-xs); color: var(--graphite); padding-bottom: 10px; border-bottom: 1px solid var(--ink); }
+.idx { list-style: none; margin: 0; padding: 0; }
+.idx-group { font-size: var(--t-xs); color: var(--graphite); padding: 28px 0 8px; border-bottom: 1px solid var(--rule); }
+.idx-row {
+  position: relative; text-decoration: none; padding: 14px 0; border-bottom: 1px solid var(--rule);
+  align-items: baseline; transition: padding-left 0.18s ease;
+}
+.idx-row::before {
+  content: ""; position: absolute; left: 0; top: 50%; width: 0; height: 2px; background: var(--redline);
+  transition: width 0.18s ease;
+}
+.idx-row:hover, .idx-row:focus-visible { padding-left: 28px; }
+.idx-row:hover::before, .idx-row:focus-visible::before { width: 16px; }
+.idx-row:focus-visible { outline: none; }
+.idx-title { font-size: var(--t-l); font-weight: 300; }
+.idx-prog, .idx-place { color: var(--graphite); font-size: var(--t-s); }
+
+.peek {
+  position: fixed; left: 0; top: 0; width: 260px; height: auto; z-index: 30; pointer-events: none;
+  opacity: 0; transition: opacity 0.15s ease; box-shadow: 0 1px 0 var(--rule);
+}
+.peek.on { opacity: 1; }
+
+/* chapters and projects */
+.chapter { padding-top: clamp(72px, 10vw, 150px); scroll-margin-top: var(--head); }
+.chapter-title { padding-bottom: 18px; border-bottom: 1px solid var(--ink); }
+.project { padding-top: clamp(44px, 6vw, 96px); scroll-margin-top: var(--head); }
+.project + .project { border-top: 1px solid var(--rule); margin-top: clamp(44px, 6vw, 96px); }
+.p-head {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 4fr) minmax(0, 3.2fr);
+  gap: clamp(20px, 3vw, 48px); align-items: start; margin-bottom: clamp(24px, 3vw, 40px);
+}
+.p-title h3 { margin: 0 0 12px; font-size: var(--t-xl); line-height: 1.05; letter-spacing: -0.005em; }
+.p-sub { color: var(--graphite); max-width: 32em; }
+.p-desc { max-width: 38em; }
+
+/* title block (carimbo) as on a drawing sheet */
+.carimbo { margin: 0; border: 1px solid var(--ink); font-size: var(--t-s); line-height: 1.4; }
+.carimbo div { padding: 9px 12px 10px; }
+.carimbo div + div { border-top: 1px solid var(--ink); }
+.carimbo dt { font-size: var(--t-xs); color: var(--graphite); margin-bottom: 2px; }
+.carimbo dd { margin: 0; }
+
+/* justified rows: every image in a row shares one height */
+.gallery { display: flex; flex-direction: column; gap: var(--gap); }
+.row {
+  display: flex; gap: var(--gap); width: 100%; margin-inline: auto;
+  max-width: min(100%, calc(var(--sum) * 80vh + (var(--n) - 1) * var(--gap)));
+}
+.fig {
+  flex: var(--ar) 1 0%; aspect-ratio: var(--ar); min-width: 0;
+  display: block; padding: 0; margin: 0; border: 0; background: transparent; cursor: zoom-in;
+}
+.fig img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* more projects */
+.cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(36px, 4vw, 56px) clamp(16px, 2.4vw, 32px); padding-top: clamp(28px, 4vw, 48px); align-items: start; }
+.card .fig { width: 100%; }
+.card h3 { margin: 14px 0 2px; font-size: var(--t-l); line-height: 1.3; }
+.card p { color: var(--graphite); font-size: var(--t-s); }
+
+/* darkroom */
+.darkroom { background: var(--dark); color: #ffffff; margin-top: clamp(80px, 11vw, 160px); padding-block: clamp(64px, 9vw, 130px); scroll-margin-top: var(--head); }
+.darkroom .muted { color: #9a9a9a; }
+.darkroom :focus-visible { outline-color: #ffffff; }
+.dark-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px 32px; padding-bottom: 18px; border-bottom: 1px solid #ffffff; }
+.ph-groups { display: grid; gap: clamp(48px, 6vw, 88px); padding-top: clamp(36px, 5vw, 72px); }
+.ph-label { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 24px; margin: 0 0 14px; padding-bottom: 10px; border-bottom: 1px solid #3a3a3a; font-size: var(--t-s); font-weight: 400; }
+.prints { display: flex; justify-content: center; gap: clamp(16px, 4vw, 64px); padding-top: clamp(36px, 5vw, 72px); }
+.prints figure { margin: 0; flex: 0 1 calc(min(80vh, 920px) * 0.707); min-width: 0; }
+.prints .fig { width: 100%; }
+.prints figcaption { display: flex; flex-direction: column; gap: 2px; font-size: var(--t-s); color: #ffffff; }
+
+/* about / CV */
+.about-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(28px, 5vw, 88px); padding-top: clamp(28px, 4vw, 48px); }
+.about-text { font-size: var(--t-l); font-weight: 300; line-height: 1.55; max-width: 30em; }
+.cv-wrap { display: grid; gap: 44px; }
+.cv-group h3, .cv-small h3 { margin: 0 0 10px; font-size: var(--t-s); font-weight: 500; }
+.cv { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.cv li { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); gap: 20px; padding: 12px 0; border-bottom: 1px solid var(--rule); font-size: var(--t-s); line-height: 1.5; }
+.cv-a { font-weight: 500; }
+.cv-small { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.cv-small ul { list-style: none; margin: 0; padding: 10px 0 0; border-top: 1px solid var(--ink); font-size: var(--t-s); line-height: 1.75; }
+
+/* contact */
+.contact-lead { padding-top: clamp(28px, 4vw, 48px); color: var(--graphite); }
+.email { font-family: var(--display); font-weight: 300; font-size: clamp(1.5rem, 5.6vw, 5.2rem); line-height: 1.1; margin-top: 10px; overflow-wrap: anywhere; }
+.email a { text-decoration-thickness: 2px; text-underline-offset: 0.14em; }
+.email a:hover { text-decoration-color: var(--redline); }
+.contact-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 28px; margin-top: 24px; }
+.copy { font: 400 var(--t-s)/1 var(--body); background: var(--ink); color: var(--paper); border: 1px solid var(--ink); padding: 11px 16px; cursor: pointer; }
+.copy:hover { background: var(--paper); color: var(--ink); }
+
+/* footer */
+.foot { margin-top: clamp(90px, 12vw, 180px); border-top: 1px solid var(--ink); padding-block: clamp(40px, 6vw, 72px) 40px; }
+.quote { margin: 0 0 48px; max-width: 34em; }
+.quote p { font-size: var(--t-l); font-weight: 300; line-height: 1.45; }
+.quote footer { margin-top: 10px; font-size: var(--t-s); font-weight: 500; }
+.foot-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 32px; font-size: var(--t-xs); }
+
+/* lightbox */
+.lb {
+  width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0;
+  background: var(--paper); color: var(--ink);
+}
+.lb[open] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
+.lb::backdrop { background: var(--paper); }
+.lb-top, .lb-bot { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 14px var(--gutter); font-size: var(--t-s); }
+.lb-title { font-weight: 500; }
+.lb-close { font: 400 var(--t-s)/1 var(--body); background: none; border: 1px solid var(--ink); color: var(--ink); padding: 9px 14px; cursor: pointer; }
+.lb-close:hover { background: var(--ink); color: var(--paper); }
+.lb-stage { position: relative; display: flex; align-items: center; justify-content: center; min-height: 0; padding: 0 clamp(44px, 6vw, 88px); }
+.lb-stage img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+.lb-nav {
+  position: absolute; top: 0; bottom: 0; width: clamp(44px, 6vw, 88px); display: flex; align-items: center; justify-content: center;
+  background: none; border: 0; cursor: pointer; color: var(--ink);
+}
+.lb-prev { left: 0; } .lb-next { right: 0; }
+.lb-nav svg { width: 18px; height: 36px; fill: none; stroke: currentColor; stroke-width: 1.25; }
+.lb-nav:hover svg { stroke: var(--redline); }
+
+/* responsive */
+@media (max-width: 1100px) {
+  .p-head { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .p-title { grid-column: 1 / -1; }
+  .about-grid { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 860px) {
+  .years { display: none; }
+  .brand { margin-right: auto; }
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  .hero-img img { height: auto; width: 100%; }
+  .idx-cols, .idx-row { grid-template-columns: minmax(0, 1fr) minmax(0, 0.8fr); }
+  .idx-cols span:last-child, .idx-place { display: none; }
+}
+@media (max-width: 640px) {
+  :root { --gap: 8px; }
+  .head-in { gap: 14px; }
+  .brand { display: none; }
+  .nav { margin-right: auto; }
+  .p-head { grid-template-columns: minmax(0, 1fr); }
+  .row { flex-wrap: wrap; max-width: 100%; }
+  .fig { flex: 1 1 100%; }
+  .cards { grid-template-columns: minmax(0, 1fr); }
+  .idx-cols { display: none; }
+  .idx-row { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .prints { flex-direction: column; }
+  .prints figure { flex: none; }
+  .cv li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .cv-small { grid-template-columns: minmax(0, 1fr); }
+  .lb-stage { padding: 0 8px; }
+  .lb-nav { width: 36px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .idx-row, .idx-row::before, .peek { transition: none; }
+}
+
+/* ---------- cursor: red cross ---------- */
+.cur-layer { position: fixed; inset: 0; pointer-events: none; z-index: 2147483000; display: none; }
+html.cur-on .cur-layer { display: block; }
+html.cur-on, html.cur-on * { cursor: none !important; }
+.cur-layer.out .c-plus { opacity: 0; }
+.c-plus { position: fixed; left: 0; top: 0; width: 22px; height: 22px; margin: -11px 0 0 -11px; will-change: transform; }
+.c-plus i { position: absolute; inset: 0; transition: transform .15s ease; }
+.c-plus i::before, .c-plus i::after { content: ""; position: absolute; background: var(--redline); }
+.c-plus i::before { left: 10px; top: 0; width: 2px; height: 22px; }
+.c-plus i::after { top: 10px; left: 0; height: 2px; width: 22px; }
+.c-plus.big i { transform: rotate(45deg) scale(1.25); }
+@media (hover: none), (pointer: coarse) { .cur-layer { display: none !important; } }
+@media (prefers-reduced-motion: reduce) { .c-plus i { transition: none; } }
+
+</style>
+</head>
+<body>
+<a class="skip" href="#indice"><span data-l="pt" lang="pt-PT">Saltar para os projetos</span><span data-l="en" lang="en">Skip to the projects</span></a>
+<header class="head">
+  <div class="wrap head-in">
+    <a class="brand" href="#nome">David Carrilho</a>
+    <span class="years">2020—2026.</span>
+    <nav class="nav" aria-label="Secções">
+      <a href="#indice"><span data-l="pt" lang="pt-PT">Projetos</span><span data-l="en" lang="en">Projects</span></a>
+      <a href="#fotografia"><span data-l="pt" lang="pt-PT">Fotografia</span><span data-l="en" lang="en">Photography</span></a>
+      <a href="#sobre"><span data-l="pt" lang="pt-PT">Sobre</span><span data-l="en" lang="en">About</span></a>
+      <a href="#contacto"><span data-l="pt" lang="pt-PT">Contacto</span><span data-l="en" lang="en">Contact</span></a>
+    </nav>
+    <button type="button" class="lang" id="lang" aria-label="Mudar para inglês / Switch to Portuguese"><span data-l="pt">EN</span><span data-l="en">PT</span></button>
+  </div>
+</header>
+<main>
+
+<section class="hero wrap" aria-labelledby="nome">
+  <div class="hero-text">
+    <h1 class="name" id="nome">DAVID<br>CARRILHO.</h1>
+    <div class="hero-foot">
+      <p class="role"><span data-l="pt" lang="pt-PT">Arquiteto</span><span data-l="en" lang="en">Architect</span><br><span class="muted"><span data-l="pt" lang="pt-PT">Portfólio de arquitetura, 2020—2026</span><span data-l="en" lang="en">Architecture portfolio, 2020—2026</span></span></p>
+      <p class="intro"><span data-l="pt" lang="pt-PT">A arquitetura leva-me a explorar novas formas de habitar e a usar a tecnologia para melhorar a vida nos espaços que desenhamos. Procuro criar ambientes adaptáveis e atentos ao futuro, que respondam às necessidades de hoje e acolham as que ainda estão por vir.</span><span data-l="en" lang="en">My passion for architecture drives me to explore new ways of living and to use technology to improve life in the spaces we design. I aim to create adaptable, forward-thinking environments that meet today’s needs and anticipate those still to come.</span></p>
+      <p class="hero-links"><a href="#indice"><span data-l="pt" lang="pt-PT">Ver projetos</span><span data-l="en" lang="en">See the projects</span></a><a href="#contacto"><span data-l="pt" lang="pt-PT">Contactar</span><span data-l="en" lang="en">Get in touch</span></a></p>
+    </div>
+  </div>
+  <figure class="hero-img">
+    <img src="img/ps-1-md.webp" srcset="img/ps-1-sm.webp 450w, img/ps-1-md.webp 914w, img/ps-1-lg.webp 1263w" sizes="(max-width: 760px) 100vw, 42vw" width="914" height="1300" alt="Paddle Surf, maqueta" data-alt-pt="Paddle Surf, maqueta" data-alt-en="Paddle Surf, model" loading="eager" fetchpriority="high" decoding="async">
+    <figcaption><span data-l="pt" lang="pt-PT">Paddle Surf, maqueta</span><span data-l="en" lang="en">Paddle Surf, model</span></figcaption>
+  </figure>
+</section>
+
+<section class="index wrap" id="indice" aria-labelledby="indice-t">
+  <h2 class="sec-title" id="indice-t"><span data-l="pt" lang="pt-PT">Índice.</span><span data-l="en" lang="en">Index.</span></h2>
+  <div class="idx-cols" aria-hidden="true"><span><span data-l="pt" lang="pt-PT">Projeto</span><span data-l="en" lang="en">Project</span></span><span><span data-l="pt" lang="pt-PT">Programa</span><span data-l="en" lang="en">Program</span></span><span><span data-l="pt" lang="pt-PT">Local</span><span data-l="en" lang="en">Location</span></span></div>
+  <ul class="idx"><li class="idx-group"><span data-l="pt" lang="pt-PT">Trabalhos recentes</span><span data-l="en" lang="en">Latest work</span></li><li><a class="idx-row" href="#casa-sesimbra" data-thumb="img/cs-1-sm.webp"><span class="idx-title"><span data-l="pt" lang="pt-PT">Casa em Sesimbra</span><span data-l="en" lang="en">House in Sesimbra</span></span><span class="idx-prog"><span data-l="pt" lang="pt-PT">Habitação unifamiliar</span><span data-l="en" lang="en">Single-family house</span></span><span class="idx-place">Sesimbra</span></a></li><li><a class="idx-row" href="#tecnico" data-thumb="img/te-1-hq-sm.webp"><span class="idx-title">Técnico</span><span class="idx-prog"><span data-l="pt" lang="pt-PT">Concurso público, edifício universitário</span><span data-l="en" lang="en">Public competition, university building</span></span><span class="idx-place"><span data-l="pt" lang="pt-PT">Lisboa</span><span data-l="en" lang="en">Lisbon</span></span></a></li><li><a class="idx-row" href="#inversao-urbana" data-thumb="img/iu-1-hq-sm.webp"><span class="idx-title"><span data-l="pt" lang="pt-PT">Inversão Urbana e Bioclimática</span><span data-l="en" lang="en">Urban and Bioclimatic Inversion</span></span><span class="idx-prog"><span data-l="pt" lang="pt-PT">Habitação coletiva e parque urbano</span><span data-l="en" lang="en">Collective housing and urban park</span></span><span class="idx-place"><span data-l="pt" lang="pt-PT">Lisboa</span><span data-l="en" lang="en">Lisbon</span></span></a></li><li><a class="idx-row" href="#centro-aquatico" data-thumb="img/ac-1-hq-sm.webp"><span class="idx-title"><span data-l="pt" lang="pt-PT">Centro Aquático</span><span data-l="en" lang="en">Aquatic Center</span></span><span class="idx-prog"><span data-l="pt" lang="pt-PT">Equipamento desportivo e de lazer</span><span data-l="en" lang="en">Sports and leisure facility</span></span><span class="idx-place">Almada</span></a></li><li><a class="idx-row" href="#villa-mensa" data-thumb="img/vm-1-sm.webp"><span class="idx-title">Villa Mensa</span><span class="idx-prog"><span data-l="pt" lang="pt-PT">Restauro e conservação</span><span data-l="en" lang="en">Restoration and conservation</span></span><span class="idx-place"><span data-l="pt" lang="pt-PT">Ferrara, Itália</span><span data-l="en" lang="en">Ferrara, Italy</span></span></a></li><li class="idx-group"><span data-l="pt" lang="pt-PT">Habitação</span><span data-l="en" lang="en">Housing</span></li><li><a class="idx-row" href="#alto-do-restelo" data-thumb="img/ar-1-sm.webp"><span class="idx-title">Alto do Restelo</span><span class="idx-prog"><span data-l="pt" lang="pt-PT">Habitação coletiva</span><span data-l="en" lang="en">Collective housing</span></span><span class="idx-place"><span data-l="pt" lang="pt-PT">Lisboa</span><span data-l="en" lang="en">Lisbon</span></span></a></li><li><a class="idx-row" href="#sete-rios" data-thumb="img/sc-1-hq-sm.webp"><span class="idx-title">Sete Rios</span><span class="idx-prog"><span data-l="pt" lang="pt-PT">Habitação coletiva</span><span data-l="en" lang="en">Collective housing</span></span><span class="idx-place"><span data-l="pt" lang="pt-PT">Lisboa</span><span data-l="en" lang="en">Lisbon</span></span></a></li><li><a class="idx-row" href="#sete-rios-prototipo" data-thumb="img/sp-1-sm.webp"><span class="idx-title"><span data-l="pt" lang="pt-PT">Sete Rios | Protótipo</span><span data-l="en" lang="en">Sete Rios | Prototype</span></span><span class="idx-prog"><span data-l="pt" lang="pt-PT">Habitação social</span><span data-l="en" lang="en">Social housing</span></span><span class="idx-place"><span data-l="pt" lang="pt-PT">Lisboa</span><span data-l="en" lang="en">Lisbon</span></span></a></li><li class="idx-group"><span data-l="pt" lang="pt-PT">Primeiros passos</span><span data-l="en" lang="en">First steps</span></li><li><a class="idx-row" href="#torre-faul" data-thumb="img/tf-1-sm.webp"><span class="idx-title"><span data-l="pt" lang="pt-PT">Repensar o Campus | Torre FAUL</span><span data-l="en" lang="en">Rethinking the Campus | FAUL Tower</span></span><span class="idx-prog"><span data-l="pt" lang="pt-PT">Campus universitário</span><span data-l="en" lang="en">University campus</span></span><span class="idx-place"><span data-l="pt" lang="pt-PT">Lisboa</span><span data-l="en" lang="en">Lisbon</span></span></a></li><li><a class="idx-row" href="#paddle-surf" data-thumb="img/ps-1-sm.webp"><span class="idx-title">Paddle Surf</span><span class="idx-prog"><span data-l="pt" lang="pt-PT">Escola e café</span><span data-l="en" lang="en">School and café</span></span><span class="idx-place">Praia de Santa Marta</span></a></li><li class="idx-group"><span data-l="pt" lang="pt-PT">Outros trabalhos</span><span data-l="en" lang="en">Other work</span></li><li><a class="idx-row" href="#outros-projetos" data-thumb="img/cb-1-hq-sm.webp"><span class="idx-title"><span data-l="pt" lang="pt-PT">Mais projetos</span><span data-l="en" lang="en">More projects</span></span><span class="idx-prog">Copper Blades, Azeitão, Mesa Jardim, <span data-l="pt" lang="pt-PT">Rede Primária de Emergência</span><span data-l="en" lang="en">Primary Emergency Network</span></span><span class="idx-place"></span></a></li><li><a class="idx-row" href="#fotografia" data-thumb="img/ph-1-sm.webp"><span class="idx-title"><span data-l="pt" lang="pt-PT">Fotografia</span><span data-l="en" lang="en">Photography</span></span><span class="idx-prog"><span data-l="pt" lang="pt-PT">Película e digital</span><span data-l="en" lang="en">Film and digital</span></span><span class="idx-place"></span></a></li></ul>
+</section>
+
+<section class="chapter wrap" id="recentes" aria-labelledby="recentes-t">
+  <h2 class="sec-title chapter-title" id="recentes-t"><span data-l="pt" lang="pt-PT">Trabalhos recentes.</span><span data-l="en" lang="en">Latest work.</span></h2>
+  
+<article class="project" id="casa-sesimbra" aria-labelledby="casa-sesimbra-t">
+  <header class="p-head">
+    <div class="p-title"><h3 id="casa-sesimbra-t"><span data-l="pt" lang="pt-PT">Casa em Sesimbra</span><span data-l="en" lang="en">House in Sesimbra</span></h3><p class="p-sub"><span data-l="pt" lang="pt-PT">Habitação unifamiliar em L, num lote em declive suave</span><span data-l="en" lang="en">An L-shaped single-family house on a gently sloping plot</span></p></div>
+    <p class="p-desc"><span data-l="pt" lang="pt-PT">Uma casa térrea em L que separa o corpo social do corpo privativo. Para manter a vida num só plano e mexer o mínimo no terreno, o corpo privativo avança em consola sobre a entrada, apoiado num pilar em V, e abriga a chegada e o acesso à garagem em cave. Os quartos ficam num volume de ripado vertical de madeira entre lajes de betão à vista. A zona social, rebocada a branco, abre-se por inteiro para o jardim, e a cobertura prolonga-se sobre uma zona de refeições exterior. Muros de pedra natural marcam a entrada. A última imagem é do estudo inicial.</span><span data-l="en" lang="en">A single-story L-shaped house that separates the living wing from the private wing. To keep life on one level and move as little earth as possible, the private wing cantilevers over the entrance on a V-shaped column, sheltering the arrival and the access to the basement garage. The bedrooms sit in a volume of vertical timber slats between exposed concrete slabs. The living wing, rendered in white, opens fully to the garden, and its roof extends over an outdoor dining area. Natural stone walls mark the entrance. The last image shows the initial study.</span></p>
+    <dl class="carimbo"><div><dt><span data-l="pt" lang="pt-PT">Local</span><span data-l="en" lang="en">Location</span></dt><dd>Sesimbra</dd></div><div><dt><span data-l="pt" lang="pt-PT">Ano</span><span data-l="en" lang="en">Year</span></dt><dd>2026</dd></div><div><dt><span data-l="pt" lang="pt-PT">Tipo</span><span data-l="en" lang="en">Type</span></dt><dd><span data-l="pt" lang="pt-PT">Projeto de arquitetura</span><span data-l="en" lang="en">Architectural design</span></dd></div><div><dt><span data-l="pt" lang="pt-PT">Programa</span><span data-l="en" lang="en">Program</span></dt><dd><span data-l="pt" lang="pt-PT">Habitação unifamiliar</span><span data-l="en" lang="en">Single-family house</span></dd></div></dl>
+  </header>
+  <div class="gallery"><div class="row" style="--sum:1.7917;--n:1"><button class="fig" type="button" data-group="casa-sesimbra" data-full="img/cs-1-lg.webp" data-cap-pt="Entrada, com o corpo privativo em consola" data-cap-en="Entrance, with the cantilevered private wing" data-title-pt="Casa em Sesimbra" data-title-en="House in Sesimbra" style="--ar:1.7917"><img src="img/cs-1-md.webp" srcset="img/cs-1-sm.webp 640w, img/cs-1-md.webp 1300w, img/cs-1-lg.webp 2400w" sizes="(max-width: 640px) 100vw, 92vw" width="1300" height="726" alt="Casa em Sesimbra: Entrada, com o corpo privativo em consola" data-alt-pt="Casa em Sesimbra: Entrada, com o corpo privativo em consola" data-alt-en="House in Sesimbra: Entrance, with the cantilevered private wing" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:3.5556;--n:2"><button class="fig" type="button" data-group="casa-sesimbra" data-full="img/cs-2-lg.webp" data-cap-pt="Percurso de entrada" data-cap-en="Entrance path" data-title-pt="Casa em Sesimbra" data-title-en="House in Sesimbra" style="--ar:1.7778"><img src="img/cs-2-md.webp" srcset="img/cs-2-sm.webp 640w, img/cs-2-md.webp 1300w, img/cs-2-lg.webp 1920w" sizes="(max-width: 640px) 100vw, 46vw" width="1300" height="731" alt="Casa em Sesimbra: Percurso de entrada" data-alt-pt="Casa em Sesimbra: Percurso de entrada" data-alt-en="House in Sesimbra: Entrance path" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="casa-sesimbra" data-full="img/cs-3-lg.webp" data-cap-pt="Zona social" data-cap-en="Living area" data-title-pt="Casa em Sesimbra" data-title-en="House in Sesimbra" style="--ar:1.7778"><img src="img/cs-3-md.webp" srcset="img/cs-3-sm.webp 640w, img/cs-3-md.webp 1300w, img/cs-3-lg.webp 1920w" sizes="(max-width: 640px) 100vw, 46vw" width="1300" height="731" alt="Casa em Sesimbra: Zona social" data-alt-pt="Casa em Sesimbra: Zona social" data-alt-en="House in Sesimbra: Living area" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:1.7778;--n:1"><button class="fig" type="button" data-group="casa-sesimbra" data-full="img/cs-4-lg.webp" data-cap-pt="Sala e zona de refeições exterior" data-cap-en="Living room and outdoor dining area" data-title-pt="Casa em Sesimbra" data-title-en="House in Sesimbra" style="--ar:1.7778"><img src="img/cs-4-md.webp" srcset="img/cs-4-sm.webp 640w, img/cs-4-md.webp 1300w, img/cs-4-lg.webp 1920w" sizes="(max-width: 640px) 100vw, 92vw" width="1300" height="731" alt="Casa em Sesimbra: Sala e zona de refeições exterior" data-alt-pt="Casa em Sesimbra: Sala e zona de refeições exterior" data-alt-en="House in Sesimbra: Living room and outdoor dining area" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:1.7917;--n:1"><button class="fig" type="button" data-group="casa-sesimbra" data-full="img/cs-5-lg.webp" data-cap-pt="Estudo inicial" data-cap-en="Initial study" data-title-pt="Casa em Sesimbra" data-title-en="House in Sesimbra" style="--ar:1.7917"><img src="img/cs-5-md.webp" srcset="img/cs-5-sm.webp 640w, img/cs-5-md.webp 1300w, img/cs-5-lg.webp 2400w" sizes="(max-width: 640px) 100vw, 92vw" width="1300" height="726" alt="Casa em Sesimbra: Estudo inicial" data-alt-pt="Casa em Sesimbra: Estudo inicial" data-alt-en="House in Sesimbra: Initial study" loading="lazy" decoding="async"></button></div></div>
+</article>
+<article class="project" id="tecnico" aria-labelledby="tecnico-t">
+  <header class="p-head">
+    <div class="p-title"><h3 id="tecnico-t">Técnico</h3><p class="p-sub"><span data-l="pt" lang="pt-PT">Concurso público de conceção para dois edifícios no campus da Alameda do IST</span><span data-l="en" lang="en">Public design competition for two buildings on IST’s Alameda campus</span></p></div>
+    <p class="p-desc"><span data-l="pt" lang="pt-PT">Proposta para a expansão do Instituto Superior Técnico, desenvolvida em concurso público de conceção. Os dois edifícios organizam-se em torno de um pátio central ajardinado e reúnem auditório, salas de aula, laboratórios, central de segurança e receção, distribuídos entre o piso 1 e o piso -1.</span><span data-l="en" lang="en">Proposal for the expansion of Instituto Superior Técnico, developed for a public design competition. The two buildings are arranged around a central landscaped courtyard and house an auditorium, classrooms, laboratories, a security control room and reception, across level 1 and level -1.</span></p>
+    <dl class="carimbo"><div><dt><span data-l="pt" lang="pt-PT">Local</span><span data-l="en" lang="en">Location</span></dt><dd><span data-l="pt" lang="pt-PT">Campus da Alameda, IST, Lisboa</span><span data-l="en" lang="en">Alameda campus, IST, Lisbon</span></dd></div><div><dt><span data-l="pt" lang="pt-PT">Tipo</span><span data-l="en" lang="en">Type</span></dt><dd><span data-l="pt" lang="pt-PT">Concurso público de conceção</span><span data-l="en" lang="en">Public design competition</span></dd></div><div><dt><span data-l="pt" lang="pt-PT">Programa</span><span data-l="en" lang="en">Program</span></dt><dd><span data-l="pt" lang="pt-PT">Edifício universitário</span><span data-l="en" lang="en">University building</span></dd></div></dl>
+  </header>
+  <div class="gallery"><div class="row" style="--sum:1.1484;--n:1"><button class="fig" type="button" data-group="tecnico" data-full="img/te-1-hq-lg.webp" data-cap-pt="Vista exterior" data-cap-en="Exterior view" data-title-pt="Técnico" data-title-en="Técnico" style="--ar:1.1484"><img src="img/te-1-hq-md.webp" srcset="img/te-1-hq-sm.webp 640w, img/te-1-hq-md.webp 1300w, img/te-1-hq-lg.webp 1470w" sizes="(max-width: 640px) 100vw, 92vw" width="1300" height="1132" alt="Técnico: Vista exterior" data-alt-pt="Técnico: Vista exterior" data-alt-en="Técnico: Exterior view" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:2.5196;--n:2"><button class="fig" type="button" data-group="tecnico" data-full="img/te-2-hq-lg.webp" data-cap-pt="Imagem 3D" data-cap-en="Rendering" data-title-pt="Técnico" data-title-en="Técnico" style="--ar:1.2602"><img src="img/te-2-hq-md.webp" srcset="img/te-2-hq-sm.webp 640w, img/te-2-hq-md.webp 1300w, img/te-2-hq-lg.webp 1613w" sizes="(max-width: 640px) 100vw, 46vw" width="1300" height="1032" alt="Técnico: Imagem 3D" data-alt-pt="Técnico: Imagem 3D" data-alt-en="Técnico: Rendering" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="tecnico" data-full="img/te-3-hq-lg.webp" data-cap-pt="Imagem 3D" data-cap-en="Rendering" data-title-pt="Técnico" data-title-en="Técnico" style="--ar:1.2594"><img src="img/te-3-hq-md.webp" srcset="img/te-3-hq-sm.webp 640w, img/te-3-hq-md.webp 1300w, img/te-3-hq-lg.webp 1612w" sizes="(max-width: 640px) 100vw, 46vw" width="1300" height="1032" alt="Técnico: Imagem 3D" data-alt-pt="Técnico: Imagem 3D" data-alt-en="Técnico: Rendering" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:1.5506;--n:2"><button class="fig" type="button" data-group="tecnico" data-full="img/te-4-lg.webp" data-cap-pt="Planta geral, piso 1, esc. 1/200" data-cap-en="General plan, level 1, 1:200" data-title-pt="Técnico" data-title-en="Técnico" style="--ar:0.7753"><img src="img/te-4-md.webp" srcset="img/te-4-sm.webp 496w, img/te-4-md.webp 1008w, img/te-4-lg.webp 1501w" sizes="(max-width: 640px) 100vw, 46vw" width="1008" height="1300" alt="Técnico: Planta geral, piso 1, esc. 1/200" data-alt-pt="Técnico: Planta geral, piso 1, esc. 1/200" data-alt-en="Técnico: General plan, level 1, 1:200" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="tecnico" data-full="img/te-7-lg.webp" data-cap-pt="Planta geral, piso -1, esc. 1/200" data-cap-en="General plan, level -1, 1:200" data-title-pt="Técnico" data-title-en="Técnico" style="--ar:0.7753"><img src="img/te-7-md.webp" srcset="img/te-7-sm.webp 496w, img/te-7-md.webp 1008w, img/te-7-lg.webp 1501w" sizes="(max-width: 640px) 100vw, 46vw" width="1008" height="1300" alt="Técnico: Planta geral, piso -1, esc. 1/200" data-alt-pt="Técnico: Planta geral, piso -1, esc. 1/200" data-alt-en="Técnico: General plan, level -1, 1:200" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:2.5214;--n:2"><button class="fig" type="button" data-group="tecnico" data-full="img/te-5-hq-lg.webp" data-cap-pt="Pátio central" data-cap-en="Central courtyard" data-title-pt="Técnico" data-title-en="Técnico" style="--ar:1.2594"><img src="img/te-5-hq-md.webp" srcset="img/te-5-hq-sm.webp 640w, img/te-5-hq-md.webp 1300w, img/te-5-hq-lg.webp 1612w" sizes="(max-width: 640px) 100vw, 46vw" width="1300" height="1032" alt="Técnico: Pátio central" data-alt-pt="Técnico: Pátio central" data-alt-en="Técnico: Central courtyard" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="tecnico" data-full="img/te-6-hq-lg.webp" data-cap-pt="Pátio central" data-cap-en="Central courtyard" data-title-pt="Técnico" data-title-en="Técnico" style="--ar:1.262"><img src="img/te-6-hq-md.webp" srcset="img/te-6-hq-sm.webp 640w, img/te-6-hq-md.webp 1300w, img/te-6-hq-lg.webp 1363w" sizes="(max-width: 640px) 100vw, 46vw" width="1300" height="1030" alt="Técnico: Pátio central" data-alt-pt="Técnico: Pátio central" data-alt-en="Técnico: Central courtyard" loading="lazy" decoding="async"></button></div></div>
+</article>
+<article class="project" id="inversao-urbana" aria-labelledby="inversao-urbana-t">
+  <header class="p-head">
+    <div class="p-title"><h3 id="inversao-urbana-t"><span data-l="pt" lang="pt-PT">Inversão Urbana e Bioclimática</span><span data-l="en" lang="en">Urban and Bioclimatic Inversion</span></h3><p class="p-sub"><span data-l="pt" lang="pt-PT">Renaturalização do Vale de Santo António como estratégia para uma Lisboa integrada e sustentável</span><span data-l="en" lang="en">Renaturalizing the Vale de Santo António as a strategy for an integrated, sustainable Lisbon</span></p></div>
+    <p class="p-desc"><span data-l="pt" lang="pt-PT">O vale é devolvido à cidade como parque, organizado em bosque central, floresta produtiva (3,73 ha), produção alimentar (1,36 ha), parque agrícola e áreas de lazer, ligados por um sistema de passadiços. A habitação reúne 50 fogos, 25 T1, 16 T2 e 9 T3, em blocos de cinco pisos com T1 e T2 e de três pisos com T2 e T3. O projeto foi desenvolvido até ao pormenor construtivo, às escalas 1/20 e 1/5.</span><span data-l="en" lang="en">The valley is returned to the city as a park, organized into a central wood, productive forest (3.73 ha), food production (1.36 ha), an agricultural park and leisure areas, linked by a system of boardwalks. The housing holds 50 flats, 25 one-bedroom, 16 two-bedroom and 9 three-bedroom, in five-story blocks of one- and two-bedroom flats and three-story blocks of two- and three-bedroom flats. The project was developed down to construction detail at 1:20 and 1:5.</span></p>
+    <dl class="carimbo"><div><dt><span data-l="pt" lang="pt-PT">Local</span><span data-l="en" lang="en">Location</span></dt><dd><span data-l="pt" lang="pt-PT">Vale de Santo António, Lisboa</span><span data-l="en" lang="en">Vale de Santo António, Lisbon</span></dd></div><div><dt><span data-l="pt" lang="pt-PT">Ano</span><span data-l="en" lang="en">Year</span></dt><dd>2024–25</dd></div><div><dt><span data-l="pt" lang="pt-PT">Contexto</span><span data-l="en" lang="en">Context</span></dt><dd><span data-l="pt" lang="pt-PT">FA-ULisboa, Projeto Integrado III, 5.º ano</span><span data-l="en" lang="en">FA-ULisboa, Integrated Project III, 5th year</span></dd></div><div><dt><span data-l="pt" lang="pt-PT">Docente</span><span data-l="en" lang="en">Tutor</span></dt><dd><span data-l="pt" lang="pt-PT">Prof. Arq. Nuno Mateus</span><span data-l="en" lang="en">Prof. Arch. Nuno Mateus</span></dd></div></dl>
+  </header>
+  <div class="gallery"><div class="row" style="--sum:1.9527;--n:2"><button class="fig" type="button" data-group="inversao-urbana" data-full="img/iu-1-hq-lg.webp" data-cap-pt="Fachada" data-cap-en="Facade" data-title-pt="Inversão Urbana e Bioclimática" data-title-en="Urban and Bioclimatic Inversion" style="--ar:0.6926"><img src="img/iu-1-hq-md.webp" srcset="img/iu-1-hq-sm.webp 443w, img/iu-1-hq-md.webp 748w, img/iu-1-hq-lg.webp 748w" sizes="(max-width: 640px) 100vw, 33vw" width="748" height="1080" alt="Inversão Urbana e Bioclimática: Fachada" data-alt-pt="Inversão Urbana e Bioclimática: Fachada" data-alt-en="Urban and Bioclimatic Inversion: Facade" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="inversao-urbana" data-full="img/iu-2-lg.webp" data-cap-pt="Planta de implantação" data-cap-en="Site plan" data-title-pt="Inversão Urbana e Bioclimática" data-title-en="Urban and Bioclimatic Inversion" style="--ar:1.2601"><img src="img/iu-2-md.webp" srcset="img/iu-2-sm.webp 640w, img/iu-2-md.webp 1300w, img/iu-2-lg.webp 1589w" sizes="(max-width: 640px) 100vw, 59vw" width="1300" height="1032" alt="Inversão Urbana e Bioclimática: Planta de implantação" data-alt-pt="Inversão Urbana e Bioclimática: Planta de implantação" data-alt-en="Urban and Bioclimatic Inversion: Site plan" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:2.4742;--n:1"><button class="fig" type="button" data-group="inversao-urbana" data-full="img/iu-7-hq-lg.webp" data-cap-pt="Imagem 3D" data-cap-en="Rendering" data-title-pt="Inversão Urbana e Bioclimática" data-title-en="Urban and Bioclimatic Inversion" style="--ar:2.4742"><img src="img/iu-7-hq-md.webp" srcset="img/iu-7-hq-sm.webp 640w, img/iu-7-hq-md.webp 1300w, img/iu-7-hq-lg.webp 1920w" sizes="(max-width: 640px) 100vw, 92vw" width="1300" height="525" alt="Inversão Urbana e Bioclimática: Imagem 3D" data-alt-pt="Inversão Urbana e Bioclimática: Imagem 3D" data-alt-en="Urban and Bioclimatic Inversion: Rendering" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:2.0385;--n:3"><button class="fig" type="button" data-group="inversao-urbana" data-full="img/iu-3-lg.webp" data-cap-pt="Sistemas do parque" data-cap-en="Park systems" data-title-pt="Inversão Urbana e Bioclimática" data-title-en="Urban and Bioclimatic Inversion" style="--ar:0.7053"><img src="img/iu-3-md.webp" srcset="img/iu-3-sm.webp 451w, img/iu-3-md.webp 917w, img/iu-3-lg.webp 1429w" sizes="(max-width: 640px) 100vw, 32vw" width="917" height="1300" alt="Inversão Urbana e Bioclimática: Sistemas do parque" data-alt-pt="Inversão Urbana e Bioclimática: Sistemas do parque" data-alt-en="Urban and Bioclimatic Inversion: Park systems" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="inversao-urbana" data-full="img/iu-4-lg.webp" data-cap-pt="Alçado norte, corte transversal e planta do piso térreo" data-cap-en="North elevation, cross-section and ground-floor plan" data-title-pt="Inversão Urbana e Bioclimática" data-title-en="Urban and Bioclimatic Inversion" style="--ar:0.6027"><img src="img/iu-4-md.webp" srcset="img/iu-4-sm.webp 386w, img/iu-4-md.webp 784w, img/iu-4-lg.webp 1024w" sizes="(max-width: 640px) 100vw, 30vw" width="784" height="1300" alt="Inversão Urbana e Bioclimática: Alçado norte, corte transversal e planta do piso térreo" data-alt-pt="Inversão Urbana e Bioclimática: Alçado norte, corte transversal e planta do piso térreo" data-alt-en="Urban and Bioclimatic Inversion: North elevation, cross-section and ground-floor plan" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="inversao-urbana" data-full="img/iu-5-lg.webp" data-cap-pt="Axonometria explodida" data-cap-en="Exploded axonometric" data-title-pt="Inversão Urbana e Bioclimática" data-title-en="Urban and Bioclimatic Inversion" style="--ar:0.7305"><img src="img/iu-5-md.webp" srcset="img/iu-5-sm.webp 468w, img/iu-5-md.webp 950w, img/iu-5-lg.webp 1079w" sizes="(max-width: 640px) 100vw, 33vw" width="950" height="1300" alt="Inversão Urbana e Bioclimática: Axonometria explodida" data-alt-pt="Inversão Urbana e Bioclimática: Axonometria explodida" data-alt-en="Urban and Bioclimatic Inversion: Exploded axonometric" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:2.0982;--n:2"><button class="fig" type="button" data-group="inversao-urbana" data-full="img/iu-8a-hq-lg.webp" data-cap-pt="Imagem 3D" data-cap-en="Rendering" data-title-pt="Inversão Urbana e Bioclimática" data-title-en="Urban and Bioclimatic Inversion" style="--ar:1.0491"><img src="img/iu-8a-hq-md.webp" srcset="img/iu-8a-hq-sm.webp 640w, img/iu-8a-hq-md.webp 1133w, img/iu-8a-hq-lg.webp 1133w" sizes="(max-width: 640px) 100vw, 46vw" width="1133" height="1080" alt="Inversão Urbana e Bioclimática: Imagem 3D" data-alt-pt="Inversão Urbana e Bioclimática: Imagem 3D" data-alt-en="Urban and Bioclimatic Inversion: Rendering" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="inversao-urbana" data-full="img/iu-8b-hq-lg.webp" data-cap-pt="Interior" data-cap-en="Interior" data-title-pt="Inversão Urbana e Bioclimática" data-title-en="Urban and Bioclimatic Inversion" style="--ar:1.0491"><img src="img/iu-8b-hq-md.webp" srcset="img/iu-8b-hq-sm.webp 640w, img/iu-8b-hq-md.webp 1133w, img/iu-8b-hq-lg.webp 1133w" sizes="(max-width: 640px) 100vw, 46vw" width="1133" height="1080" alt="Inversão Urbana e Bioclimática: Interior" data-alt-pt="Inversão Urbana e Bioclimática: Interior" data-alt-en="Urban and Bioclimatic Inversion: Interior" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:3.3279;--n:2"><button class="fig" type="button" data-group="inversao-urbana" data-full="img/iu-6-lg.webp" data-cap-pt="Pormenores construtivos, esc. 1/5 e 1/20" data-cap-en="Construction details, 1:5 and 1:20" data-title-pt="Inversão Urbana e Bioclimática" data-title-en="Urban and Bioclimatic Inversion" style="--ar:0.7473"><img src="img/iu-6-md.webp" srcset="img/iu-6-sm.webp 478w, img/iu-6-md.webp 971w, img/iu-6-lg.webp 1638w" sizes="(max-width: 640px) 100vw, 30vw" width="971" height="1300" alt="Inversão Urbana e Bioclimática: Pormenores construtivos, esc. 1/5 e 1/20" data-alt-pt="Inversão Urbana e Bioclimática: Pormenores construtivos, esc. 1/5 e 1/20" data-alt-en="Urban and Bioclimatic Inversion: Construction details, 1:5 and 1:20" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="inversao-urbana" data-full="img/iu-9-lg.webp" data-cap-pt="Diagramas" data-cap-en="Diagrams" data-title-pt="Inversão Urbana e Bioclimática" data-title-en="Urban and Bioclimatic Inversion" style="--ar:2.5806"><img src="img/iu-9-md.webp" srcset="img/iu-9-sm.webp 640w, img/iu-9-md.webp 1300w, img/iu-9-lg.webp 1600w" sizes="(max-width: 640px) 100vw, 71vw" width="1300" height="504" alt="Inversão Urbana e Bioclimática: Diagramas" data-alt-pt="Inversão Urbana e Bioclimática: Diagramas" data-alt-en="Urban and Bioclimatic Inversion: Diagrams" loading="lazy" decoding="async"></button></div></div>
+</article>
+<article class="project" id="centro-aquatico" aria-labelledby="centro-aquatico-t">
+  <header class="p-head">
+    <div class="p-title"><h3 id="centro-aquatico-t"><span data-l="pt" lang="pt-PT">Centro Aquático</span><span data-l="en" lang="en">Aquatic Center</span></h3><p class="p-sub"><span data-l="pt" lang="pt-PT">Centro aquático e recreativo em Cacilhas, Almada</span><span data-l="en" lang="en">Aquatic and recreational center in Cacilhas, Almada</span></p></div>
+    <p class="p-desc"><span data-l="pt" lang="pt-PT">Projeto para o Cais do Ginjal, na frente ribeirinha de Almada. Grandes arcos e uma cobertura em caixotões filtram a luz sobre os planos de água das piscinas.</span><span data-l="en" lang="en">A project for Cais do Ginjal, on Almada’s riverfront. Large arches and a coffered roof filter light onto the pools below.</span></p>
+    <dl class="carimbo"><div><dt><span data-l="pt" lang="pt-PT">Local</span><span data-l="en" lang="en">Location</span></dt><dd>Cais do Ginjal, Cacilhas, Almada</dd></div><div><dt><span data-l="pt" lang="pt-PT">Ano</span><span data-l="en" lang="en">Year</span></dt><dd>2023–24</dd></div><div><dt><span data-l="pt" lang="pt-PT">Contexto</span><span data-l="en" lang="en">Context</span></dt><dd><span data-l="pt" lang="pt-PT">FA-ULisboa, Projeto Integrado, 4.º ano</span><span data-l="en" lang="en">FA-ULisboa, Integrated Project, 4th year</span></dd></div><div><dt><span data-l="pt" lang="pt-PT">Docentes</span><span data-l="en" lang="en">Tutors</span></dt><dd>Prof. Hugo Farias, Prof. Guilherme Maia</dd></div></dl>
+  </header>
+  <div class="gallery"><div class="row" style="--sum:2.4769;--n:2"><button class="fig" type="button" data-group="centro-aquatico" data-full="img/ac-1-hq-lg.webp" data-cap-pt="Imagem 3D" data-cap-en="Rendering" data-title-pt="Centro Aquático" data-title-en="Aquatic Center" style="--ar:0.8889"><img src="img/ac-1-hq-md.webp" srcset="img/ac-1-hq-sm.webp 569w, img/ac-1-hq-md.webp 960w, img/ac-1-hq-lg.webp 960w" sizes="(max-width: 640px) 100vw, 33vw" width="960" height="1080" alt="Centro Aquático: Imagem 3D" data-alt-pt="Centro Aquático: Imagem 3D" data-alt-en="Aquatic Center: Rendering" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="centro-aquatico" data-full="img/ac-2-hq-lg.webp" data-cap-pt="Piscina" data-cap-en="Pool" data-title-pt="Centro Aquático" data-title-en="Aquatic Center" style="--ar:1.588"><img src="img/ac-2-hq-md.webp" srcset="img/ac-2-hq-sm.webp 640w, img/ac-2-hq-md.webp 1300w, img/ac-2-hq-lg.webp 1715w" sizes="(max-width: 640px) 100vw, 59vw" width="1300" height="819" alt="Centro Aquático: Piscina" data-alt-pt="Centro Aquático: Piscina" data-alt-en="Aquatic Center: Pool" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:1.7778;--n:1"><button class="fig" type="button" data-group="centro-aquatico" data-full="img/ac-4-hq-lg.webp" data-cap-pt="Imagem 3D" data-cap-en="Rendering" data-title-pt="Centro Aquático" data-title-en="Aquatic Center" style="--ar:1.7778"><img src="img/ac-4-hq-md.webp" srcset="img/ac-4-hq-sm.webp 640w, img/ac-4-hq-md.webp 1300w, img/ac-4-hq-lg.webp 1920w" sizes="(max-width: 640px) 100vw, 92vw" width="1300" height="731" alt="Centro Aquático: Imagem 3D" data-alt-pt="Centro Aquático: Imagem 3D" data-alt-en="Aquatic Center: Rendering" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:2.5512;--n:2"><button class="fig" type="button" data-group="centro-aquatico" data-full="img/ac-5-lg.webp" data-cap-pt="Interior" data-cap-en="Interior" data-title-pt="Centro Aquático" data-title-en="Aquatic Center" style="--ar:1.2756"><img src="img/ac-5-md.webp" srcset="img/ac-5-sm.webp 640w, img/ac-5-md.webp 1185w, img/ac-5-lg.webp 1185w" sizes="(max-width: 640px) 100vw, 46vw" width="1185" height="929" alt="Centro Aquático: Interior" data-alt-pt="Centro Aquático: Interior" data-alt-en="Aquatic Center: Interior" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="centro-aquatico" data-full="img/ac-6-lg.webp" data-cap-pt="Interior" data-cap-en="Interior" data-title-pt="Centro Aquático" data-title-en="Aquatic Center" style="--ar:1.2756"><img src="img/ac-6-md.webp" srcset="img/ac-6-sm.webp 640w, img/ac-6-md.webp 1185w, img/ac-6-lg.webp 1185w" sizes="(max-width: 640px) 100vw, 46vw" width="1185" height="929" alt="Centro Aquático: Interior" data-alt-pt="Centro Aquático: Interior" data-alt-en="Aquatic Center: Interior" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:2.186;--n:2"><button class="fig" type="button" data-group="centro-aquatico" data-full="img/ac-3-lg.webp" data-cap-pt="Planta" data-cap-en="Plan" data-title-pt="Centro Aquático" data-title-en="Aquatic Center" style="--ar:1.1595"><img src="img/ac-3-md.webp" srcset="img/ac-3-sm.webp 640w, img/ac-3-md.webp 1300w, img/ac-3-lg.webp 1432w" sizes="(max-width: 640px) 100vw, 49vw" width="1300" height="1121" alt="Centro Aquático: Planta" data-alt-pt="Centro Aquático: Planta" data-alt-en="Aquatic Center: Plan" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="centro-aquatico" data-full="img/ac-7-lg.webp" data-cap-pt="Planta" data-cap-en="Plan" data-title-pt="Centro Aquático" data-title-en="Aquatic Center" style="--ar:1.0265"><img src="img/ac-7-md.webp" srcset="img/ac-7-sm.webp 640w, img/ac-7-md.webp 1300w, img/ac-7-lg.webp 1746w" sizes="(max-width: 640px) 100vw, 43vw" width="1300" height="1266" alt="Centro Aquático: Planta" data-alt-pt="Centro Aquático: Planta" data-alt-en="Aquatic Center: Plan" loading="lazy" decoding="async"></button></div></div>
+</article>
+<article class="project" id="villa-mensa" aria-labelledby="villa-mensa-t">
+  <header class="p-head">
+    <div class="p-title"><h3 id="villa-mensa-t">Villa Mensa</h3><p class="p-sub"><span data-l="pt" lang="pt-PT">Restauro e recuperação de um palácio do séc. XV, Ferrara, Itália</span><span data-l="en" lang="en">Restoration of a 15th-century palace, Ferrara, Italy</span></p></div>
+    <p class="p-desc"><span data-l="pt" lang="pt-PT">Construída no final do séc. XV pelo bispo Bartolomeo della Rovere, nas margens do Po di Volano, a villa conserva muitos traços renascentistas que a ligam à dinastia d’Este e à paisagem de Ferrara reconhecida pela UNESCO. Feito no cantiere-scuola do Erasmus em Ferrara, o trabalho junta o levantamento do edifício e do seu estado de conservação a uma proposta de recuperação.</span><span data-l="en" lang="en">Built in the late 15th century by Bishop Bartolomeo della Rovere on the banks of the Po di Volano, the villa retains many Renaissance features that tie it to the Este dynasty and to Ferrara’s UNESCO-listed landscape. Carried out at the Erasmus cantiere-scuola in Ferrara, the work combines a survey of the building and its condition with a proposal for its recovery.</span></p>
+    <dl class="carimbo"><div><dt><span data-l="pt" lang="pt-PT">Local</span><span data-l="en" lang="en">Location</span></dt><dd><span data-l="pt" lang="pt-PT">Sabbioncello San Vittore, Ferrara, Itália</span><span data-l="en" lang="en">Sabbioncello San Vittore, Ferrara, Italy</span></dd></div><div><dt><span data-l="pt" lang="pt-PT">Contexto</span><span data-l="en" lang="en">Context</span></dt><dd>Erasmus, Università degli Studi di Ferrara</dd></div><div><dt><span data-l="pt" lang="pt-PT">Programa</span><span data-l="en" lang="en">Program</span></dt><dd><span data-l="pt" lang="pt-PT">Restauro e conservação do património</span><span data-l="en" lang="en">Heritage restoration and conservation</span></dd></div></dl>
+  </header>
+  <div class="gallery"><div class="row" style="--sum:2.1786;--n:3"><button class="fig" type="button" data-group="villa-mensa" data-full="img/vm-1-lg.webp" data-cap-pt="Fotografia do existente" data-cap-en="Existing building" data-title-pt="Villa Mensa" data-title-en="Villa Mensa" style="--ar:0.7247"><img src="img/vm-1-md.webp" srcset="img/vm-1-sm.webp 464w, img/vm-1-md.webp 942w, img/vm-1-lg.webp 1739w" sizes="(max-width: 640px) 100vw, 31vw" width="942" height="1300" alt="Villa Mensa: Fotografia do existente" data-alt-pt="Villa Mensa: Fotografia do existente" data-alt-en="Villa Mensa: Existing building" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="villa-mensa" data-full="img/vm-2-lg.webp" data-cap-pt="Levantamento" data-cap-en="Survey" data-title-pt="Villa Mensa" data-title-en="Villa Mensa" style="--ar:0.6513"><img src="img/vm-2-md.webp" srcset="img/vm-2-sm.webp 417w, img/vm-2-md.webp 847w, img/vm-2-lg.webp 1244w" sizes="(max-width: 640px) 100vw, 30vw" width="847" height="1300" alt="Villa Mensa: Levantamento" data-alt-pt="Villa Mensa: Levantamento" data-alt-en="Villa Mensa: Survey" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="villa-mensa" data-full="img/vm-3-lg.webp" data-cap-pt="Levantamento" data-cap-en="Survey" data-title-pt="Villa Mensa" data-title-en="Villa Mensa" style="--ar:0.8026"><img src="img/vm-3-md.webp" srcset="img/vm-3-sm.webp 514w, img/vm-3-md.webp 1043w, img/vm-3-lg.webp 1533w" sizes="(max-width: 640px) 100vw, 34vw" width="1043" height="1300" alt="Villa Mensa: Levantamento" data-alt-pt="Villa Mensa: Levantamento" data-alt-en="Villa Mensa: Survey" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:2.8056;--n:1"><button class="fig" type="button" data-group="villa-mensa" data-full="img/vm-4-lg.webp" data-cap-pt="Alçado" data-cap-en="Elevation" data-title-pt="Villa Mensa" data-title-en="Villa Mensa" style="--ar:2.8056"><img src="img/vm-4-md.webp" srcset="img/vm-4-sm.webp 640w, img/vm-4-md.webp 1300w, img/vm-4-lg.webp 1515w" sizes="(max-width: 640px) 100vw, 92vw" width="1300" height="463" alt="Villa Mensa: Alçado" data-alt-pt="Villa Mensa: Alçado" data-alt-en="Villa Mensa: Elevation" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:2.8424;--n:2"><button class="fig" type="button" data-group="villa-mensa" data-full="img/vm-6-lg.webp" data-cap-pt="Proposta" data-cap-en="Proposal" data-title-pt="Villa Mensa" data-title-en="Villa Mensa" style="--ar:1.0502"><img src="img/vm-6-md.webp" srcset="img/vm-6-sm.webp 640w, img/vm-6-md.webp 1300w, img/vm-6-lg.webp 1423w" sizes="(max-width: 640px) 100vw, 34vw" width="1300" height="1238" alt="Villa Mensa: Proposta" data-alt-pt="Villa Mensa: Proposta" data-alt-en="Villa Mensa: Proposal" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="villa-mensa" data-full="img/vm-8-lg.webp" data-cap-pt="Proposta" data-cap-en="Proposal" data-title-pt="Villa Mensa" data-title-en="Villa Mensa" style="--ar:1.7922"><img src="img/vm-8-md.webp" srcset="img/vm-8-sm.webp 640w, img/vm-8-md.webp 1300w, img/vm-8-lg.webp 1423w" sizes="(max-width: 640px) 100vw, 58vw" width="1300" height="725" alt="Villa Mensa: Proposta" data-alt-pt="Villa Mensa: Proposta" data-alt-en="Villa Mensa: Proposal" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:1.6189;--n:2"><button class="fig" type="button" data-group="villa-mensa" data-full="img/vm-5-lg.webp" data-cap-pt="Levantamento" data-cap-en="Survey" data-title-pt="Villa Mensa" data-title-en="Villa Mensa" style="--ar:0.8743"><img src="img/vm-5-md.webp" srcset="img/vm-5-sm.webp 560w, img/vm-5-md.webp 1137w, img/vm-5-lg.webp 1746w" sizes="(max-width: 640px) 100vw, 50vw" width="1137" height="1300" alt="Villa Mensa: Levantamento" data-alt-pt="Villa Mensa: Levantamento" data-alt-en="Villa Mensa: Survey" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="villa-mensa" data-full="img/vm-7-lg.webp" data-cap-pt="Planta geral" data-cap-en="General plan" data-title-pt="Villa Mensa" data-title-en="Villa Mensa" style="--ar:0.7446"><img src="img/vm-7-md.webp" srcset="img/vm-7-sm.webp 477w, img/vm-7-md.webp 968w, img/vm-7-lg.webp 1548w" sizes="(max-width: 640px) 100vw, 42vw" width="968" height="1300" alt="Villa Mensa: Planta geral" data-alt-pt="Villa Mensa: Planta geral" data-alt-en="Villa Mensa: General plan" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:2.1446;--n:2"><button class="fig" type="button" data-group="villa-mensa" data-full="img/vm-9-lg.webp" data-cap-pt="Proposta" data-cap-en="Proposal" data-title-pt="Villa Mensa" data-title-en="Villa Mensa" style="--ar:1.0723"><img src="img/vm-9-md.webp" srcset="img/vm-9-sm.webp 640w, img/vm-9-md.webp 1024w, img/vm-9-lg.webp 1024w" sizes="(max-width: 640px) 100vw, 46vw" width="1024" height="955" alt="Villa Mensa: Proposta" data-alt-pt="Villa Mensa: Proposta" data-alt-en="Villa Mensa: Proposal" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="villa-mensa" data-full="img/vm-10-lg.webp" data-cap-pt="Proposta" data-cap-en="Proposal" data-title-pt="Villa Mensa" data-title-en="Villa Mensa" style="--ar:1.0723"><img src="img/vm-10-md.webp" srcset="img/vm-10-sm.webp 640w, img/vm-10-md.webp 1024w, img/vm-10-lg.webp 1024w" sizes="(max-width: 640px) 100vw, 46vw" width="1024" height="955" alt="Villa Mensa: Proposta" data-alt-pt="Villa Mensa: Proposta" data-alt-en="Villa Mensa: Proposal" loading="lazy" decoding="async"></button></div></div>
+</article>
+</section>
+<section class="chapter wrap" id="habitacao" aria-labelledby="habitacao-t">
+  <h2 class="sec-title chapter-title" id="habitacao-t"><span data-l="pt" lang="pt-PT">Habitação.</span><span data-l="en" lang="en">Housing.</span></h2>
+  
+<article class="project" id="alto-do-restelo" aria-labelledby="alto-do-restelo-t">
+  <header class="p-head">
+    <div class="p-title"><h3 id="alto-do-restelo-t">Alto do Restelo</h3><p class="p-sub"><span data-l="pt" lang="pt-PT">Habitação coletiva com duas tipologias</span><span data-l="en" lang="en">Collective housing in two typologies</span></p></div>
+    <p class="p-desc"><span data-l="pt" lang="pt-PT">Dois edifícios de habitação coletiva junto à Rua Diogo de Silves, com fogos de duas dimensões, pequeno e grande. O projeto parte da volumetria e do processo de formação dos espaços interiores dos fogos, das circulações e das áreas de expansão, até às plantas à escala 1/50.</span><span data-l="en" lang="en">Two collective housing buildings on Rua Diogo de Silves, with flats in two sizes, small and large. The project works from the massing and from how the flats’ interiors, circulation and expansion areas take shape, through to plans at 1:50.</span></p>
+    <dl class="carimbo"><div><dt><span data-l="pt" lang="pt-PT">Local</span><span data-l="en" lang="en">Location</span></dt><dd><span data-l="pt" lang="pt-PT">Alto do Restelo, Lisboa</span><span data-l="en" lang="en">Alto do Restelo, Lisbon</span></dd></div><div><dt><span data-l="pt" lang="pt-PT">Ano</span><span data-l="en" lang="en">Year</span></dt><dd>2022–23</dd></div><div><dt><span data-l="pt" lang="pt-PT">Contexto</span><span data-l="en" lang="en">Context</span></dt><dd><span data-l="pt" lang="pt-PT">FA-ULisboa, Laboratório, 3.º ano</span><span data-l="en" lang="en">FA-ULisboa, Design Lab, 3rd year</span></dd></div><div><dt><span data-l="pt" lang="pt-PT">Docente</span><span data-l="en" lang="en">Tutor</span></dt><dd>Prof. José Nuno Beirão</dd></div></dl>
+  </header>
+  <div class="gallery"><div class="row" style="--sum:1.7842;--n:2"><button class="fig" type="button" data-group="alto-do-restelo" data-full="img/ar-1-lg.webp" data-cap-pt="Maqueta" data-cap-en="Model" data-title-pt="Alto do Restelo" data-title-en="Alto do Restelo" style="--ar:0.7032"><img src="img/ar-1-md.webp" srcset="img/ar-1-sm.webp 450w, img/ar-1-md.webp 914w, img/ar-1-lg.webp 1263w" sizes="(max-width: 640px) 100vw, 36vw" width="914" height="1300" alt="Alto do Restelo: Maqueta" data-alt-pt="Alto do Restelo: Maqueta" data-alt-en="Alto do Restelo: Model" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="alto-do-restelo" data-full="img/ar-5-lg.webp" data-cap-pt="Volumetria" data-cap-en="Massing" data-title-pt="Alto do Restelo" data-title-en="Alto do Restelo" style="--ar:1.081"><img src="img/ar-5-md.webp" srcset="img/ar-5-sm.webp 640w, img/ar-5-md.webp 1135w, img/ar-5-lg.webp 1135w" sizes="(max-width: 640px) 100vw, 56vw" width="1135" height="1050" alt="Alto do Restelo: Volumetria" data-alt-pt="Alto do Restelo: Volumetria" data-alt-en="Alto do Restelo: Massing" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:2.7092;--n:1"><button class="fig" type="button" data-group="alto-do-restelo" data-full="img/ar-2-lg.webp" data-cap-pt="Esquiço" data-cap-en="Sketch" data-title-pt="Alto do Restelo" data-title-en="Alto do Restelo" style="--ar:2.7092"><img src="img/ar-2-md.webp" srcset="img/ar-2-sm.webp 640w, img/ar-2-md.webp 1300w, img/ar-2-lg.webp 1742w" sizes="(max-width: 640px) 100vw, 92vw" width="1300" height="480" alt="Alto do Restelo: Esquiço" data-alt-pt="Alto do Restelo: Esquiço" data-alt-en="Alto do Restelo: Sketch" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:2.471;--n:2"><button class="fig" type="button" data-group="alto-do-restelo" data-full="img/ar-3-lg.webp" data-cap-pt="Corte" data-cap-en="Section" data-title-pt="Alto do Restelo" data-title-en="Alto do Restelo" style="--ar:1.3625"><img src="img/ar-3-md.webp" srcset="img/ar-3-sm.webp 640w, img/ar-3-md.webp 1300w, img/ar-3-lg.webp 1496w" sizes="(max-width: 640px) 100vw, 51vw" width="1300" height="954" alt="Alto do Restelo: Corte" data-alt-pt="Alto do Restelo: Corte" data-alt-en="Alto do Restelo: Section" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="alto-do-restelo" data-full="img/ar-4-lg.webp" data-cap-pt="Plantas e alçado" data-cap-en="Plans and elevation" data-title-pt="Alto do Restelo" data-title-en="Alto do Restelo" style="--ar:1.1085"><img src="img/ar-4-md.webp" srcset="img/ar-4-sm.webp 640w, img/ar-4-md.webp 1300w, img/ar-4-lg.webp 1819w" sizes="(max-width: 640px) 100vw, 41vw" width="1300" height="1173" alt="Alto do Restelo: Plantas e alçado" data-alt-pt="Alto do Restelo: Plantas e alçado" data-alt-en="Alto do Restelo: Plans and elevation" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:2.8965;--n:1"><button class="fig" type="button" data-group="alto-do-restelo" data-full="img/ar-7-lg.webp" data-cap-pt="Planta dos fogos, esc. 1/50" data-cap-en="Flat plans, 1:50" data-title-pt="Alto do Restelo" data-title-en="Alto do Restelo" style="--ar:2.8965"><img src="img/ar-7-md.webp" srcset="img/ar-7-sm.webp 640w, img/ar-7-md.webp 1300w, img/ar-7-lg.webp 1819w" sizes="(max-width: 640px) 100vw, 92vw" width="1300" height="449" alt="Alto do Restelo: Planta dos fogos, esc. 1/50" data-alt-pt="Alto do Restelo: Planta dos fogos, esc. 1/50" data-alt-en="Alto do Restelo: Flat plans, 1:50" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:2.0064;--n:2"><button class="fig" type="button" data-group="alto-do-restelo" data-full="img/ar-6-lg.webp" data-cap-pt="Plantas" data-cap-en="Plans" data-title-pt="Alto do Restelo" data-title-en="Alto do Restelo" style="--ar:0.9554"><img src="img/ar-6-md.webp" srcset="img/ar-6-sm.webp 611w, img/ar-6-md.webp 1242w, img/ar-6-lg.webp 1819w" sizes="(max-width: 640px) 100vw, 44vw" width="1242" height="1300" alt="Alto do Restelo: Plantas" data-alt-pt="Alto do Restelo: Plantas" data-alt-en="Alto do Restelo: Plans" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="alto-do-restelo" data-full="img/ar-8-lg.webp" data-cap-pt="Alçado e corte" data-cap-en="Elevation and section" data-title-pt="Alto do Restelo" data-title-en="Alto do Restelo" style="--ar:1.051"><img src="img/ar-8-md.webp" srcset="img/ar-8-sm.webp 640w, img/ar-8-md.webp 1300w, img/ar-8-lg.webp 1793w" sizes="(max-width: 640px) 100vw, 48vw" width="1300" height="1237" alt="Alto do Restelo: Alçado e corte" data-alt-pt="Alto do Restelo: Alçado e corte" data-alt-en="Alto do Restelo: Elevation and section" loading="lazy" decoding="async"></button></div></div>
+</article>
+<article class="project" id="sete-rios" aria-labelledby="sete-rios-t">
+  <header class="p-head">
+    <div class="p-title"><h3 id="sete-rios-t">Sete Rios</h3><p class="p-sub"><span data-l="pt" lang="pt-PT">Habitação coletiva</span><span data-l="en" lang="en">Collective housing</span></p></div>
+    <p class="p-desc"><span data-l="pt" lang="pt-PT">Conjunto de habitação coletiva em Sete Rios, estudado em maqueta, planta de implantação e cortes.</span><span data-l="en" lang="en">A collective housing scheme in Sete Rios, explored through models, a site plan and sections.</span></p>
+    <dl class="carimbo"><div><dt><span data-l="pt" lang="pt-PT">Local</span><span data-l="en" lang="en">Location</span></dt><dd><span data-l="pt" lang="pt-PT">Sete Rios, Lisboa</span><span data-l="en" lang="en">Sete Rios, Lisbon</span></dd></div></dl>
+  </header>
+  <div class="gallery"><div class="row" style="--sum:2.6769;--n:2"><button class="fig" type="button" data-group="sete-rios" data-full="img/sc-1-hq-lg.webp" data-cap-pt="Maqueta" data-cap-en="Model" data-title-pt="Sete Rios" data-title-en="Sete Rios" style="--ar:1.0959"><img src="img/sc-1-hq-md.webp" srcset="img/sc-1-hq-sm.webp 640w, img/sc-1-hq-md.webp 1300w, img/sc-1-hq-lg.webp 1932w" sizes="(max-width: 640px) 100vw, 38vw" width="1300" height="1186" alt="Sete Rios: Maqueta" data-alt-pt="Sete Rios: Maqueta" data-alt-en="Sete Rios: Model" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="sete-rios" data-full="img/sc-2-hq-lg.webp" data-cap-pt="Maqueta" data-cap-en="Model" data-title-pt="Sete Rios" data-title-en="Sete Rios" style="--ar:1.581"><img src="img/sc-2-hq-md.webp" srcset="img/sc-2-hq-sm.webp 640w, img/sc-2-hq-md.webp 1300w, img/sc-2-hq-lg.webp 1932w" sizes="(max-width: 640px) 100vw, 54vw" width="1300" height="822" alt="Sete Rios: Maqueta" data-alt-pt="Sete Rios: Maqueta" data-alt-en="Sete Rios: Model" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:2.9614;--n:2"><button class="fig" type="button" data-group="sete-rios" data-full="img/sc-3-lg.webp" data-cap-pt="Planta de implantação" data-cap-en="Site plan" data-title-pt="Sete Rios" data-title-en="Sete Rios" style="--ar:1.2454"><img src="img/sc-3-md.webp" srcset="img/sc-3-sm.webp 640w, img/sc-3-md.webp 1300w, img/sc-3-lg.webp 1365w" sizes="(max-width: 640px) 100vw, 39vw" width="1300" height="1044" alt="Sete Rios: Planta de implantação" data-alt-pt="Sete Rios: Planta de implantação" data-alt-en="Sete Rios: Site plan" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="sete-rios" data-full="img/sc-4-lg.webp" data-cap-pt="Cortes" data-cap-en="Sections" data-title-pt="Sete Rios" data-title-en="Sete Rios" style="--ar:1.716"><img src="img/sc-4-md.webp" srcset="img/sc-4-sm.webp 640w, img/sc-4-md.webp 1300w, img/sc-4-lg.webp 1819w" sizes="(max-width: 640px) 100vw, 53vw" width="1300" height="758" alt="Sete Rios: Cortes" data-alt-pt="Sete Rios: Cortes" data-alt-en="Sete Rios: Sections" loading="lazy" decoding="async"></button></div></div>
+</article>
+<article class="project" id="sete-rios-prototipo" aria-labelledby="sete-rios-prototipo-t">
+  <header class="p-head">
+    <div class="p-title"><h3 id="sete-rios-prototipo-t"><span data-l="pt" lang="pt-PT">Sete Rios | Protótipo</span><span data-l="en" lang="en">Sete Rios | Prototype</span></h3><p class="p-sub"><span data-l="pt" lang="pt-PT">Habitação social a partir da replicação de uma casa-protótipo</span><span data-l="en" lang="en">Social housing built from a replicated prototype house</span></p></div>
+    <p class="p-desc"><span data-l="pt" lang="pt-PT">Uma casa-protótipo desenhada para ser repetida, formando um conjunto de habitação social em Sete Rios. A mesma unidade é testada em maqueta, planta, alçado e imagens 3D.</span><span data-l="en" lang="en">A prototype house designed to be repeated, forming a social housing scheme in Sete Rios. The same unit is tested in model, plan, elevation and renderings.</span></p>
+    <dl class="carimbo"><div><dt><span data-l="pt" lang="pt-PT">Local</span><span data-l="en" lang="en">Location</span></dt><dd><span data-l="pt" lang="pt-PT">Sete Rios, Lisboa</span><span data-l="en" lang="en">Sete Rios, Lisbon</span></dd></div></dl>
+  </header>
+  <div class="gallery"><div class="row" style="--sum:2.6;--n:2"><button class="fig" type="button" data-group="sete-rios-prototipo" data-full="img/sp-1-lg.webp" data-cap-pt="Maqueta" data-cap-en="Model" data-title-pt="Sete Rios | Protótipo" data-title-en="Sete Rios | Prototype" style="--ar:1.047"><img src="img/sp-1-md.webp" srcset="img/sp-1-sm.webp 640w, img/sp-1-md.webp 1300w, img/sp-1-lg.webp 2137w" sizes="(max-width: 640px) 100vw, 37vw" width="1300" height="1242" alt="Sete Rios | Protótipo: Maqueta" data-alt-pt="Sete Rios | Protótipo: Maqueta" data-alt-en="Sete Rios | Prototype: Model" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="sete-rios-prototipo" data-full="img/sp-4-lg.webp" data-cap-pt="Imagem 3D" data-cap-en="Rendering" data-title-pt="Sete Rios | Protótipo" data-title-en="Sete Rios | Prototype" style="--ar:1.553"><img src="img/sp-4-md.webp" srcset="img/sp-4-sm.webp 640w, img/sp-4-md.webp 1300w, img/sp-4-lg.webp 1421w" sizes="(max-width: 640px) 100vw, 55vw" width="1300" height="837" alt="Sete Rios | Protótipo: Imagem 3D" data-alt-pt="Sete Rios | Protótipo: Imagem 3D" data-alt-en="Sete Rios | Prototype: Rendering" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:4.9508;--n:1"><button class="fig" type="button" data-group="sete-rios-prototipo" data-full="img/sp-3-lg.webp" data-cap-pt="Alçado" data-cap-en="Elevation" data-title-pt="Sete Rios | Protótipo" data-title-en="Sete Rios | Prototype" style="--ar:4.9508"><img src="img/sp-3-md.webp" srcset="img/sp-3-sm.webp 640w, img/sp-3-md.webp 1300w, img/sp-3-lg.webp 1812w" sizes="(max-width: 640px) 100vw, 92vw" width="1300" height="263" alt="Sete Rios | Protótipo: Alçado" data-alt-pt="Sete Rios | Protótipo: Alçado" data-alt-en="Sete Rios | Prototype: Elevation" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:2.8429;--n:2"><button class="fig" type="button" data-group="sete-rios-prototipo" data-full="img/sp-2-lg.webp" data-cap-pt="Planta de implantação" data-cap-en="Site plan" data-title-pt="Sete Rios | Protótipo" data-title-en="Sete Rios | Prototype" style="--ar:1.4332"><img src="img/sp-2-md.webp" srcset="img/sp-2-sm.webp 640w, img/sp-2-md.webp 1300w, img/sp-2-lg.webp 1512w" sizes="(max-width: 640px) 100vw, 46vw" width="1300" height="907" alt="Sete Rios | Protótipo: Planta de implantação" data-alt-pt="Sete Rios | Protótipo: Planta de implantação" data-alt-en="Sete Rios | Prototype: Site plan" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="sete-rios-prototipo" data-full="img/sp-6-lg.webp" data-cap-pt="Imagem 3D" data-cap-en="Rendering" data-title-pt="Sete Rios | Protótipo" data-title-en="Sete Rios | Prototype" style="--ar:1.4097"><img src="img/sp-6-md.webp" srcset="img/sp-6-sm.webp 640w, img/sp-6-md.webp 1300w, img/sp-6-lg.webp 1421w" sizes="(max-width: 640px) 100vw, 46vw" width="1300" height="922" alt="Sete Rios | Protótipo: Imagem 3D" data-alt-pt="Sete Rios | Protótipo: Imagem 3D" data-alt-en="Sete Rios | Prototype: Rendering" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:2.9291;--n:1"><button class="fig" type="button" data-group="sete-rios-prototipo" data-full="img/sp-5-lg.webp" data-cap-pt="Planta" data-cap-en="Plan" data-title-pt="Sete Rios | Protótipo" data-title-en="Sete Rios | Prototype" style="--ar:2.9291"><img src="img/sp-5-md.webp" srcset="img/sp-5-sm.webp 640w, img/sp-5-md.webp 1300w, img/sp-5-lg.webp 1819w" sizes="(max-width: 640px) 100vw, 92vw" width="1300" height="444" alt="Sete Rios | Protótipo: Planta" data-alt-pt="Sete Rios | Protótipo: Planta" data-alt-en="Sete Rios | Prototype: Plan" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:2.1515;--n:1"><button class="fig" type="button" data-group="sete-rios-prototipo" data-full="img/sp-7-lg.webp" data-cap-pt="Imagem 3D" data-cap-en="Rendering" data-title-pt="Sete Rios | Protótipo" data-title-en="Sete Rios | Prototype" style="--ar:2.1515"><img src="img/sp-7-md.webp" srcset="img/sp-7-sm.webp 640w, img/sp-7-md.webp 1300w, img/sp-7-lg.webp 1420w" sizes="(max-width: 640px) 100vw, 92vw" width="1300" height="604" alt="Sete Rios | Protótipo: Imagem 3D" data-alt-pt="Sete Rios | Protótipo: Imagem 3D" data-alt-en="Sete Rios | Prototype: Rendering" loading="lazy" decoding="async"></button></div></div>
+</article>
+</section>
+<section class="chapter wrap" id="primeiros-passos" aria-labelledby="primeiros-passos-t">
+  <h2 class="sec-title chapter-title" id="primeiros-passos-t"><span data-l="pt" lang="pt-PT">Primeiros passos.</span><span data-l="en" lang="en">First steps.</span></h2>
+  
+<article class="project" id="torre-faul" aria-labelledby="torre-faul-t">
+  <header class="p-head">
+    <div class="p-title"><h3 id="torre-faul-t"><span data-l="pt" lang="pt-PT">Repensar o Campus | Torre FAUL</span><span data-l="en" lang="en">Rethinking the Campus | FAUL Tower</span></h3><p class="p-sub"><span data-l="pt" lang="pt-PT">Proposta para um novo campus escolar, com uma torre no centro</span><span data-l="en" lang="en">Proposal for a new school campus with a tower at its core</span></p></div>
+    <p class="p-desc"><span data-l="pt" lang="pt-PT">Um exercício para (re)pensar o campus e a arquitetura da Faculdade de Arquitetura, com uma torre no centro do novo campus. Esquiços, estudos de implantação, alçados e plantas dos pisos.</span><span data-l="en" lang="en">An exercise in (re)thinking the campus and the architecture of the Faculty of Architecture, with a tower at the center of a new campus. Sketches, site studies, elevations and floor plans.</span></p>
+    <dl class="carimbo"><div><dt><span data-l="pt" lang="pt-PT">Local</span><span data-l="en" lang="en">Location</span></dt><dd><span data-l="pt" lang="pt-PT">FA-ULisboa, Lisboa</span><span data-l="en" lang="en">FA-ULisboa, Lisbon</span></dd></div><div><dt><span data-l="pt" lang="pt-PT">Programa</span><span data-l="en" lang="en">Program</span></dt><dd><span data-l="pt" lang="pt-PT">Campus universitário e torre</span><span data-l="en" lang="en">University campus and tower</span></dd></div></dl>
+  </header>
+  <div class="gallery"><div class="row" style="--sum:2.0777;--n:2"><button class="fig" type="button" data-group="torre-faul" data-full="img/tf-1-lg.webp" data-cap-pt="Estudos de implantação" data-cap-en="Site studies" data-title-pt="Repensar o Campus | Torre FAUL" data-title-en="Rethinking the Campus | FAUL Tower" style="--ar:0.9437"><img src="img/tf-1-md.webp" srcset="img/tf-1-sm.webp 604w, img/tf-1-md.webp 1227w, img/tf-1-lg.webp 1559w" sizes="(max-width: 640px) 100vw, 42vw" width="1227" height="1300" alt="Repensar o Campus | Torre FAUL: Estudos de implantação" data-alt-pt="Repensar o Campus | Torre FAUL: Estudos de implantação" data-alt-en="Rethinking the Campus | FAUL Tower: Site studies" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="torre-faul" data-full="img/tf-2-lg.webp" data-cap-pt="Esquiços" data-cap-en="Sketches" data-title-pt="Repensar o Campus | Torre FAUL" data-title-en="Rethinking the Campus | FAUL Tower" style="--ar:1.134"><img src="img/tf-2-md.webp" srcset="img/tf-2-sm.webp 640w, img/tf-2-md.webp 1300w, img/tf-2-lg.webp 1692w" sizes="(max-width: 640px) 100vw, 50vw" width="1300" height="1146" alt="Repensar o Campus | Torre FAUL: Esquiços" data-alt-pt="Repensar o Campus | Torre FAUL: Esquiços" data-alt-en="Rethinking the Campus | FAUL Tower: Sketches" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:1.692;--n:2"><button class="fig" type="button" data-group="torre-faul" data-full="img/tf-3-lg.webp" data-cap-pt="Alçados da torre" data-cap-en="Tower elevations" data-title-pt="Repensar o Campus | Torre FAUL" data-title-en="Rethinking the Campus | FAUL Tower" style="--ar:0.8867"><img src="img/tf-3-md.webp" srcset="img/tf-3-sm.webp 567w, img/tf-3-md.webp 1153w, img/tf-3-lg.webp 1369w" sizes="(max-width: 640px) 100vw, 48vw" width="1153" height="1300" alt="Repensar o Campus | Torre FAUL: Alçados da torre" data-alt-pt="Repensar o Campus | Torre FAUL: Alçados da torre" data-alt-en="Rethinking the Campus | FAUL Tower: Tower elevations" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="torre-faul" data-full="img/tf-4-lg.webp" data-cap-pt="Plantas e corte da torre" data-cap-en="Tower plans and section" data-title-pt="Repensar o Campus | Torre FAUL" data-title-en="Rethinking the Campus | FAUL Tower" style="--ar:0.8053"><img src="img/tf-4-md.webp" srcset="img/tf-4-sm.webp 515w, img/tf-4-md.webp 1047w, img/tf-4-lg.webp 1146w" sizes="(max-width: 640px) 100vw, 44vw" width="1047" height="1300" alt="Repensar o Campus | Torre FAUL: Plantas e corte da torre" data-alt-pt="Repensar o Campus | Torre FAUL: Plantas e corte da torre" data-alt-en="Rethinking the Campus | FAUL Tower: Tower plans and section" loading="lazy" decoding="async"></button></div></div>
+</article>
+<article class="project" id="paddle-surf" aria-labelledby="paddle-surf-t">
+  <header class="p-head">
+    <div class="p-title"><h3 id="paddle-surf-t">Paddle Surf</h3><p class="p-sub"><span data-l="pt" lang="pt-PT">Escola de paddle surf e café na praia de Santa Marta</span><span data-l="en" lang="en">Paddle surf school and café at Praia de Santa Marta</span></p></div>
+    <p class="p-desc"><span data-l="pt" lang="pt-PT">Uma escola de paddle surf com café, na praia de Santa Marta. Uma sequência de lâminas curvas define o espaço e a cobertura, estudada em maqueta e em esquiço.</span><span data-l="en" lang="en">A paddle surf school with a café at Praia de Santa Marta. A sequence of curved blades shapes the space and the roof, explored through models and sketches.</span></p>
+    <dl class="carimbo"><div><dt><span data-l="pt" lang="pt-PT">Local</span><span data-l="en" lang="en">Location</span></dt><dd>Praia de Santa Marta</dd></div><div><dt><span data-l="pt" lang="pt-PT">Programa</span><span data-l="en" lang="en">Program</span></dt><dd><span data-l="pt" lang="pt-PT">Escola de desporto e café</span><span data-l="en" lang="en">Sports school and café</span></dd></div></dl>
+  </header>
+  <div class="gallery"><div class="row" style="--sum:1.9128;--n:2"><button class="fig" type="button" data-group="paddle-surf" data-full="img/ps-1-lg.webp" data-cap-pt="Maqueta" data-cap-en="Model" data-title-pt="Paddle Surf" data-title-en="Paddle Surf" style="--ar:0.7032"><img src="img/ps-1-md.webp" srcset="img/ps-1-sm.webp 450w, img/ps-1-md.webp 914w, img/ps-1-lg.webp 1263w" sizes="(max-width: 640px) 100vw, 34vw" width="914" height="1300" alt="Paddle Surf: Maqueta" data-alt-pt="Paddle Surf: Maqueta" data-alt-en="Paddle Surf: Model" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="paddle-surf" data-full="img/ps-2-lg.webp" data-cap-pt="Maqueta" data-cap-en="Model" data-title-pt="Paddle Surf" data-title-en="Paddle Surf" style="--ar:1.2096"><img src="img/ps-2-md.webp" srcset="img/ps-2-sm.webp 640w, img/ps-2-md.webp 1300w, img/ps-2-lg.webp 1795w" sizes="(max-width: 640px) 100vw, 58vw" width="1300" height="1075" alt="Paddle Surf: Maqueta" data-alt-pt="Paddle Surf: Maqueta" data-alt-en="Paddle Surf: Model" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:3.0846;--n:2"><button class="fig" type="button" data-group="paddle-surf" data-full="img/ps-3-lg.webp" data-cap-pt="Imagem 3D" data-cap-en="Rendering" data-title-pt="Paddle Surf" data-title-en="Paddle Surf" style="--ar:1.7242"><img src="img/ps-3-md.webp" srcset="img/ps-3-sm.webp 640w, img/ps-3-md.webp 1269w, img/ps-3-lg.webp 1269w" sizes="(max-width: 640px) 100vw, 51vw" width="1269" height="736" alt="Paddle Surf: Imagem 3D" data-alt-pt="Paddle Surf: Imagem 3D" data-alt-en="Paddle Surf: Rendering" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="paddle-surf" data-full="img/ps-5-lg.webp" data-cap-pt="Maqueta" data-cap-en="Model" data-title-pt="Paddle Surf" data-title-en="Paddle Surf" style="--ar:1.3604"><img src="img/ps-5-md.webp" srcset="img/ps-5-sm.webp 640w, img/ps-5-md.webp 1300w, img/ps-5-lg.webp 1423w" sizes="(max-width: 640px) 100vw, 41vw" width="1300" height="956" alt="Paddle Surf: Maqueta" data-alt-pt="Paddle Surf: Maqueta" data-alt-en="Paddle Surf: Model" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:1.7655;--n:1"><button class="fig" type="button" data-group="paddle-surf" data-full="img/ps-4-lg.webp" data-cap-pt="Esquiços" data-cap-en="Sketches" data-title-pt="Paddle Surf" data-title-en="Paddle Surf" style="--ar:1.7655"><img src="img/ps-4-md.webp" srcset="img/ps-4-sm.webp 640w, img/ps-4-md.webp 1300w, img/ps-4-lg.webp 1799w" sizes="(max-width: 640px) 100vw, 92vw" width="1300" height="736" alt="Paddle Surf: Esquiços" data-alt-pt="Paddle Surf: Esquiços" data-alt-en="Paddle Surf: Sketches" loading="lazy" decoding="async"></button></div></div>
+</article>
+</section>
+
+<section class="chapter wrap" id="outros-projetos" aria-labelledby="outros-t">
+  <h2 class="sec-title chapter-title" id="outros-t"><span data-l="pt" lang="pt-PT">Mais projetos.</span><span data-l="en" lang="en">More projects.</span></h2>
+  <div class="cards"><div class="card"><button class="fig" type="button" data-group="outros" data-full="img/cb-1-hq-lg.webp" data-cap-pt="Projeto para o EBEC 2022" data-cap-en="Project for EBEC 2022" data-title-pt="Copper Blades" data-title-en="Copper Blades" style="--ar:1.5454"><img src="img/cb-1-hq-md.webp" srcset="img/cb-1-hq-sm.webp 640w, img/cb-1-hq-md.webp 1300w, img/cb-1-hq-lg.webp 1669w" sizes="(max-width: 640px) 100vw, 46vw" width="1300" height="841" alt="Copper Blades: Projeto para o EBEC 2022" data-alt-pt="Copper Blades: Projeto para o EBEC 2022" data-alt-en="Copper Blades: Project for EBEC 2022" loading="lazy" decoding="async"></button><h3>Copper Blades</h3><p><span data-l="pt" lang="pt-PT">Projeto para o EBEC 2022</span><span data-l="en" lang="en">Project for EBEC 2022</span></p></div><div class="card"><button class="fig" type="button" data-group="outros" data-full="img/az-1-hq-lg.webp" data-cap-pt="Modelação e imagens 3D para um projeto em Azeitão, 2023" data-cap-en="Modeling and rendering for a project in Azeitão, 2023" data-title-pt="Azeitão" data-title-en="Azeitão" style="--ar:1.8703"><img src="img/az-1-hq-md.webp" srcset="img/az-1-hq-sm.webp 640w, img/az-1-hq-md.webp 1300w, img/az-1-hq-lg.webp 2048w" sizes="(max-width: 640px) 100vw, 46vw" width="1300" height="695" alt="Azeitão: Modelação e imagens 3D para um projeto em Azeitão, 2023" data-alt-pt="Azeitão: Modelação e imagens 3D para um projeto em Azeitão, 2023" data-alt-en="Azeitão: Modeling and rendering for a project in Azeitão, 2023" loading="lazy" decoding="async"></button><h3>Azeitão</h3><p><span data-l="pt" lang="pt-PT">Modelação e imagens 3D para um projeto em Azeitão, 2023</span><span data-l="en" lang="en">Modeling and rendering for a project in Azeitão, 2023</span></p></div><div class="card"><button class="fig" type="button" data-group="outros" data-full="img/mj-1-lg.webp" data-cap-pt="Projeto para a Pizza na Praia, Carcavelos" data-cap-en="Project for Pizza na Praia, Carcavelos" data-title-pt="Mesa Jardim" data-title-en="Mesa Jardim" style="--ar:2.0079"><img src="img/mj-1-md.webp" srcset="img/mj-1-sm.webp 640w, img/mj-1-md.webp 1300w, img/mj-1-lg.webp 1524w" sizes="(max-width: 640px) 100vw, 46vw" width="1300" height="647" alt="Mesa Jardim: Projeto para a Pizza na Praia, Carcavelos" data-alt-pt="Mesa Jardim: Projeto para a Pizza na Praia, Carcavelos" data-alt-en="Mesa Jardim: Project for Pizza na Praia, Carcavelos" loading="lazy" decoding="async"></button><h3>Mesa Jardim</h3><p><span data-l="pt" lang="pt-PT">Projeto para a Pizza na Praia, Carcavelos</span><span data-l="en" lang="en">Project for Pizza na Praia, Carcavelos</span></p></div><div class="card"><button class="fig" type="button" data-group="outros" data-full="img/rp-1-lg.webp" data-cap-pt="Case study para o BITE Lisboa 2024" data-cap-en="Case study for BITE Lisboa 2024" data-title-pt="Rede Primária de Emergência" data-title-en="Primary Emergency Network" style="--ar:0.9648"><img src="img/rp-1-md.webp" srcset="img/rp-1-sm.webp 617w, img/rp-1-md.webp 1042w, img/rp-1-lg.webp 1042w" sizes="(max-width: 640px) 100vw, 46vw" width="1042" height="1080" alt="Rede Primária de Emergência: Case study para o BITE Lisboa 2024" data-alt-pt="Rede Primária de Emergência: Case study para o BITE Lisboa 2024" data-alt-en="Primary Emergency Network: Case study for BITE Lisboa 2024" loading="lazy" decoding="async"></button><h3><span data-l="pt" lang="pt-PT">Rede Primária de Emergência</span><span data-l="en" lang="en">Primary Emergency Network</span></h3><p><span data-l="pt" lang="pt-PT">Case study para o BITE Lisboa 2024</span><span data-l="en" lang="en">Case study for BITE Lisboa 2024</span></p></div></div>
+</section>
+
+<section class="darkroom" id="fotografia" aria-labelledby="foto-t">
+  <div class="wrap">
+    <div class="dark-head"><h2 class="sec-title" id="foto-t"><span data-l="pt" lang="pt-PT">Fotografia.</span><span data-l="en" lang="en">Photography.</span></h2><p class="muted"><span data-l="pt" lang="pt-PT">Fotografia analógica e digital.</span><span data-l="en" lang="en">Film and digital photography.</span></p></div>
+    <div class="ph-groups"><div class="ph-group"><h3 class="ph-label"><span>Nikon Zf, 2026</span></h3><div class="gallery"><div class="row" style="--sum:3.0006;--n:2"><button class="fig" type="button" data-group="fotografia" data-full="img/zf-4-lg.webp" data-cap-pt="Nikon Zf, 2026" data-cap-en="Nikon Zf, 2026" data-title-pt="Fotografia" data-title-en="Photography" style="--ar:1.5003"><img src="img/zf-4-md.webp" srcset="img/zf-4-sm.webp 640w, img/zf-4-md.webp 1300w, img/zf-4-lg.webp 2400w" sizes="(max-width: 640px) 100vw, 46vw" width="1300" height="866" alt="Fotografia: Nikon Zf, 2026" data-alt-pt="Fotografia: Nikon Zf, 2026" data-alt-en="Photography: Nikon Zf, 2026" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="fotografia" data-full="img/zf-1-lg.webp" data-cap-pt="Nikon Zf, 2026" data-cap-en="Nikon Zf, 2026" data-title-pt="Fotografia" data-title-en="Photography" style="--ar:1.5003"><img src="img/zf-1-md.webp" srcset="img/zf-1-sm.webp 640w, img/zf-1-md.webp 1300w, img/zf-1-lg.webp 2400w" sizes="(max-width: 640px) 100vw, 46vw" width="1300" height="866" alt="Fotografia: Nikon Zf, 2026" data-alt-pt="Fotografia: Nikon Zf, 2026" data-alt-en="Photography: Nikon Zf, 2026" loading="lazy" decoding="async"></button></div><div class="row" style="--sum:4.5009;--n:3"><button class="fig" type="button" data-group="fotografia" data-full="img/zf-3-lg.webp" data-cap-pt="Nikon Zf, 2026" data-cap-en="Nikon Zf, 2026" data-title-pt="Fotografia" data-title-en="Photography" style="--ar:1.5003"><img src="img/zf-3-md.webp" srcset="img/zf-3-sm.webp 640w, img/zf-3-md.webp 1300w, img/zf-3-lg.webp 2400w" sizes="(max-width: 640px) 100vw, 31vw" width="1300" height="866" alt="Fotografia: Nikon Zf, 2026" data-alt-pt="Fotografia: Nikon Zf, 2026" data-alt-en="Photography: Nikon Zf, 2026" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="fotografia" data-full="img/zf-2-lg.webp" data-cap-pt="Nikon Zf, 2026" data-cap-en="Nikon Zf, 2026" data-title-pt="Fotografia" data-title-en="Photography" style="--ar:1.5003"><img src="img/zf-2-md.webp" srcset="img/zf-2-sm.webp 640w, img/zf-2-md.webp 1300w, img/zf-2-lg.webp 2400w" sizes="(max-width: 640px) 100vw, 31vw" width="1300" height="866" alt="Fotografia: Nikon Zf, 2026" data-alt-pt="Fotografia: Nikon Zf, 2026" data-alt-en="Photography: Nikon Zf, 2026" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="fotografia" data-full="img/zf-5-lg.webp" data-cap-pt="Nikon Zf, 2026" data-cap-en="Nikon Zf, 2026" data-title-pt="Fotografia" data-title-en="Photography" style="--ar:1.5003"><img src="img/zf-5-md.webp" srcset="img/zf-5-sm.webp 640w, img/zf-5-md.webp 1300w, img/zf-5-lg.webp 2400w" sizes="(max-width: 640px) 100vw, 31vw" width="1300" height="866" alt="Fotografia: Nikon Zf, 2026" data-alt-pt="Fotografia: Nikon Zf, 2026" data-alt-en="Photography: Nikon Zf, 2026" loading="lazy" decoding="async"></button></div></div></div><div class="ph-group"><h3 class="ph-label"><span>Ilford HP5 Plus, 2024</span></h3><div class="gallery"><div class="row" style="--sum:2.1624;--n:2"><button class="fig" type="button" data-group="fotografia" data-full="img/hp-1-lg.webp" data-cap-pt="Ilford HP5 Plus, 2024" data-cap-en="Ilford HP5 Plus, 2024" data-title-pt="Fotografia" data-title-en="Photography" style="--ar:1.4926"><img src="img/hp-1-md.webp" srcset="img/hp-1-sm.webp 640w, img/hp-1-md.webp 1300w, img/hp-1-lg.webp 2400w" sizes="(max-width: 640px) 100vw, 64vw" width="1300" height="871" alt="Fotografia: Ilford HP5 Plus, 2024" data-alt-pt="Fotografia: Ilford HP5 Plus, 2024" data-alt-en="Photography: Ilford HP5 Plus, 2024" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="fotografia" data-full="img/hp-2-lg.webp" data-cap-pt="Ilford HP5 Plus, 2024" data-cap-en="Ilford HP5 Plus, 2024" data-title-pt="Fotografia" data-title-en="Photography" style="--ar:0.6698"><img src="img/hp-2-md.webp" srcset="img/hp-2-sm.webp 429w, img/hp-2-md.webp 871w, img/hp-2-lg.webp 1608w" sizes="(max-width: 640px) 100vw, 30vw" width="871" height="1300" alt="Fotografia: Ilford HP5 Plus, 2024" data-alt-pt="Fotografia: Ilford HP5 Plus, 2024" data-alt-en="Photography: Ilford HP5 Plus, 2024" loading="lazy" decoding="async"></button></div></div></div><div class="ph-group"><h3 class="ph-label"><span>Ilford HP5, 2023</span><span class="muted">Igreja do Sagrado Coração de Jesus, Teatro Thalia</span></h3><div class="gallery"><div class="row" style="--sum:1.414;--n:2"><button class="fig" type="button" data-group="fotografia" data-full="img/ph-1-lg.webp" data-cap-pt="Igreja do Sagrado Coração de Jesus, Ilford HP5, 2023" data-cap-en="Igreja do Sagrado Coração de Jesus, Ilford HP5, 2023" data-title-pt="Fotografia" data-title-en="Photography" style="--ar:0.707"><img src="img/ph-1-md.webp" srcset="img/ph-1-sm.webp 452w, img/ph-1-md.webp 919w, img/ph-1-lg.webp 1158w" sizes="(max-width: 640px) 100vw, 46vw" width="919" height="1300" alt="Fotografia: Igreja do Sagrado Coração de Jesus, Ilford HP5, 2023" data-alt-pt="Fotografia: Igreja do Sagrado Coração de Jesus, Ilford HP5, 2023" data-alt-en="Photography: Igreja do Sagrado Coração de Jesus, Ilford HP5, 2023" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="fotografia" data-full="img/ph-2-lg.webp" data-cap-pt="Teatro Thalia, Ilford HP5, 2023" data-cap-en="Teatro Thalia, Ilford HP5, 2023" data-title-pt="Fotografia" data-title-en="Photography" style="--ar:0.707"><img src="img/ph-2-md.webp" srcset="img/ph-2-sm.webp 452w, img/ph-2-md.webp 919w, img/ph-2-lg.webp 1180w" sizes="(max-width: 640px) 100vw, 46vw" width="919" height="1300" alt="Fotografia: Teatro Thalia, Ilford HP5, 2023" data-alt-pt="Fotografia: Teatro Thalia, Ilford HP5, 2023" data-alt-en="Photography: Teatro Thalia, Ilford HP5, 2023" loading="lazy" decoding="async"></button></div></div></div><div class="ph-group"><h3 class="ph-label"><span>Kodak Gold, 2021</span></h3><div class="gallery"><div class="row" style="--sum:1.3378;--n:2"><button class="fig" type="button" data-group="fotografia" data-full="img/kg-1-lg.webp" data-cap-pt="Kodak Gold, 2021" data-cap-en="Kodak Gold, 2021" data-title-pt="Fotografia" data-title-en="Photography" style="--ar:0.6689"><img src="img/kg-1-md.webp" srcset="img/kg-1-sm.webp 428w, img/kg-1-md.webp 870w, img/kg-1-lg.webp 1605w" sizes="(max-width: 640px) 100vw, 46vw" width="870" height="1300" alt="Fotografia: Kodak Gold, 2021" data-alt-pt="Fotografia: Kodak Gold, 2021" data-alt-en="Photography: Kodak Gold, 2021" loading="lazy" decoding="async"></button><button class="fig" type="button" data-group="fotografia" data-full="img/kg-2-lg.webp" data-cap-pt="Kodak Gold, 2021" data-cap-en="Kodak Gold, 2021" data-title-pt="Fotografia" data-title-en="Photography" style="--ar:0.6689"><img src="img/kg-2-md.webp" srcset="img/kg-2-sm.webp 428w, img/kg-2-md.webp 870w, img/kg-2-lg.webp 1605w" sizes="(max-width: 640px) 100vw, 46vw" width="870" height="1300" alt="Fotografia: Kodak Gold, 2021" data-alt-pt="Fotografia: Kodak Gold, 2021" data-alt-en="Photography: Kodak Gold, 2021" loading="lazy" decoding="async"></button></div></div></div></div>
+  </div>
+</section>
+
+<section class="chapter wrap about" id="sobre" aria-labelledby="sobre-t">
+  <h2 class="sec-title chapter-title" id="sobre-t"><span data-l="pt" lang="pt-PT">Sobre.</span><span data-l="en" lang="en">About.</span></h2>
+  <div class="about-grid">
+    <p class="about-text"><span data-l="pt" lang="pt-PT">Sou arquiteto, com Mestrado Integrado em Arquitetura pela Faculdade de Arquitetura da Universidade de Lisboa e um Erasmus em Ferrara dedicado ao restauro e conservação do património. A minha experiência inclui o estágio profissional na Câmara Municipal do Barreiro, no Gabinete do Corredor Ecológico do Rio Coina, e trabalho de projeto e visualização em gabinetes de arquitetura. Fotografo em digital e em película.</span><span data-l="en" lang="en">I am an architect with an Integrated Master’s in Architecture from the Faculty of Architecture, University of Lisbon, and an Erasmus in Ferrara focused on heritage restoration and conservation. My experience includes a professional internship at Barreiro City Council, in the Rio Coina Ecological Corridor Office, and design and visualization work at architecture practices. I shoot both digital and film.</span></p>
+    <div class="cv-wrap"><div class="cv-group"><h3><span data-l="pt" lang="pt-PT">Experiência</span><span data-l="en" lang="en">Experience</span></h3><ul class="cv"><li><span class="cv-a">Câmara Municipal do Barreiro</span><span class="cv-b"><span data-l="pt" lang="pt-PT">Arquiteto, estágio profissional no GCERC, Gabinete do Corredor Ecológico do Rio Coina</span><span data-l="en" lang="en">Architect, professional internship at GCERC, the Rio Coina Ecological Corridor Office</span></span></li><li><span class="cv-a">Bransolutions</span><span class="cv-b"><span data-l="pt" lang="pt-PT">Arquiteto, projeto da Aerogare Civil das Lajes</span><span data-l="en" lang="en">Architect, Lajes Civil Air Terminal project</span></span></li><li><span class="cv-a">Augusto Costa Arquitectos</span><span class="cv-b"><span data-l="pt" lang="pt-PT">Arquiteto, projeto e renderização de imagem para moradias</span><span data-l="en" lang="en">Architect, design and rendering for single-family houses</span></span></li><li><span class="cv-a">Pizza na Praia, Meco</span><span class="cv-b"><span data-l="pt" lang="pt-PT">Coordenador de equipa: gestão das equipas de sala, coordenação do serviço e atendimento ao público</span><span data-l="en" lang="en">Team coordinator: front-of-house team management, service coordination and customer service</span></span></li></ul></div><div class="cv-group"><h3><span data-l="pt" lang="pt-PT">Concursos e prémios</span><span data-l="en" lang="en">Competitions and awards</span></h3><ul class="cv"><li><span class="cv-a"><span data-l="pt" lang="pt-PT">Concurso público de conceção</span><span data-l="en" lang="en">Public design competition</span></span><span class="cv-b"><span data-l="pt" lang="pt-PT">Projeto de expansão do Instituto Superior Técnico</span><span data-l="en" lang="en">Instituto Superior Técnico expansion</span></span></li><li><span class="cv-a"><span data-l="pt" lang="pt-PT">Concurso público de conceção</span><span data-l="en" lang="en">Public design competition</span></span><span class="cv-b"><span data-l="pt" lang="pt-PT">Projeto para a Escola Secundária do Restelo</span><span data-l="en" lang="en">Restelo Secondary School</span></span></li><li><span class="cv-a"><span data-l="pt" lang="pt-PT">1.º lugar, Case Study</span><span data-l="en" lang="en">1st place, Case Study</span></span><span class="cv-b">BITE Challenge 2024, IST</span></li><li><span class="cv-a"><span data-l="pt" lang="pt-PT">1.º lugar, Innovative Design</span><span data-l="en" lang="en">1st place, Innovative Design</span></span><span class="cv-b">EBEC 2023, IST</span></li><li><span class="cv-a"><span data-l="pt" lang="pt-PT">Finalista ibérico</span><span data-l="en" lang="en">Iberian finalist</span></span><span class="cv-b">EBEC Iberia 2023</span></li><li><span class="cv-a">Quadrante Challenge</span><span class="cv-b">2024</span></li></ul></div><div class="cv-group"><h3><span data-l="pt" lang="pt-PT">Formação</span><span data-l="en" lang="en">Education</span></h3><ul class="cv"><li><span class="cv-a">Faculdade de Arquitetura da Universidade de Lisboa</span><span class="cv-b"><span data-l="pt" lang="pt-PT">Mestrado Integrado em Arquitetura</span><span data-l="en" lang="en">Integrated Master’s in Architecture</span></span></li><li><span class="cv-a">Università degli Studi di Ferrara</span><span class="cv-b"><span data-l="pt" lang="pt-PT">Programa Erasmus. Especialização em restauro e conservação do património arquitetónico, com participação num cantiere-scuola de recuperação da Villa della Mensa (séc. XV), na Emília-Romanha.</span><span data-l="en" lang="en">Erasmus program. Specialization in the restoration and conservation of architectural heritage, including a cantiere-scuola on the recovery of the 15th-century Villa della Mensa, Emilia-Romagna.</span></span></li></ul></div><div class="cv-small"><div><h3><span data-l="pt" lang="pt-PT">Competências</span><span data-l="en" lang="en">Skills</span></h3><ul><li><span data-l="pt" lang="pt-PT">Conceção arquitetónica</span><span data-l="en" lang="en">Architectural design</span></li><li><span data-l="pt" lang="pt-PT">Planeamento urbano e territorial</span><span data-l="en" lang="en">Urban and regional planning</span></li><li><span data-l="pt" lang="pt-PT">Desenho técnico e modelação BIM</span><span data-l="en" lang="en">Technical drawing and BIM modeling</span></li><li><span data-l="pt" lang="pt-PT">Impressão 3D e prototipagem</span><span data-l="en" lang="en">3D printing and prototyping</span></li><li><span data-l="pt" lang="pt-PT">Fotografia digital e analógica</span><span data-l="en" lang="en">Digital and film photography</span></li></ul></div><div><h3>Software</h3><ul><li>ArchiCAD</li><li>AutoCAD</li><li>SketchUp</li><li>Enscape</li><li>Lumion</li><li>V-Ray</li><li>Adobe Photoshop</li><li>Adobe Lightroom</li><li>Microsoft Office</li></ul></div><div><h3><span data-l="pt" lang="pt-PT">Línguas</span><span data-l="en" lang="en">Languages</span></h3><ul><li><span data-l="pt" lang="pt-PT">Português</span><span data-l="en" lang="en">Portuguese</span></li><li><span data-l="pt" lang="pt-PT">Inglês</span><span data-l="en" lang="en">English</span></li><li><span data-l="pt" lang="pt-PT">Italiano</span><span data-l="en" lang="en">Italian</span></li><li><span data-l="pt" lang="pt-PT">Espanhol</span><span data-l="en" lang="en">Spanish</span></li></ul></div></div></div>
+  </div>
+</section>
+
+<section class="chapter wrap contact" id="contacto" aria-labelledby="contacto-t">
+  <h2 class="sec-title chapter-title" id="contacto-t"><span data-l="pt" lang="pt-PT">Contacto.</span><span data-l="en" lang="en">Contact.</span></h2>
+  <p class="contact-lead"><span data-l="pt" lang="pt-PT">Para colaborações, concursos ou oportunidades de trabalho.</span><span data-l="en" lang="en">For collaborations, competitions or job opportunities.</span></p>
+  <p class="email"><a href="mailto:carrilho.david@gmail.com">carrilho.david@gmail.com</a></p>
+  <p class="contact-row"><button type="button" class="copy" id="copy-email" data-email="carrilho.david@gmail.com"><span data-l="pt" lang="pt-PT">Copiar email</span><span data-l="en" lang="en">Copy email</span></button><span class="muted">Azeitão, Portugal</span></p>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <blockquote class="quote"><p>“Architecture is about trying to make the world a little more like our dreams.”</p><footer>Bjarke Ingels</footer></blockquote>
+    <div class="foot-row">
+      <p><span data-l="pt" lang="pt-PT">Todos os projetos, desenhos, maquetas e fotografias são da autoria de David Carrilho.</span><span data-l="en" lang="en">All projects, drawings, models and photographs by David Carrilho.</span></p>
+      <p class="muted">© 2026 David Carrilho</p>
+    </div>
+  </div>
+</footer>
+<img class="peek" id="peek" alt="" aria-hidden="true">
+<dialog class="lb" id="lb" aria-label="Visualizador de imagens">
+  <div class="lb-top"><p class="lb-title" id="lb-title"></p><button type="button" class="lb-close" id="lb-close"><span data-l="pt" lang="pt-PT">Fechar</span><span data-l="en" lang="en">Close</span></button></div>
+  <div class="lb-stage">
+    <button type="button" class="lb-nav lb-prev" id="lb-prev"><span class="sr"><span data-l="pt" lang="pt-PT">Imagem anterior</span><span data-l="en" lang="en">Previous image</span></span><svg viewBox="0 0 24 48" aria-hidden="true"><path d="M20 4 4 24l16 20"/></svg></button>
+    <img id="lb-img" alt="">
+    <button type="button" class="lb-nav lb-next" id="lb-next"><span class="sr"><span data-l="pt" lang="pt-PT">Imagem seguinte</span><span data-l="en" lang="en">Next image</span></span><svg viewBox="0 0 24 48" aria-hidden="true"><path d="m4 4 16 20L4 44"/></svg></button>
+  </div>
+  <div class="lb-bot"><p id="lb-cap"></p><p class="muted" id="lb-count"></p></div>
+</dialog>
+<div class="cur-layer" id="cur-layer" aria-hidden="true"></div>
+<script>
+(function () {
+  var root = document.documentElement;
+
+  /* ---------- language ---------- */
+  function store(k, v) { try { if (v === undefined) return localStorage.getItem(k); localStorage.setItem(k, v); } catch (e) { return null; } }
+  function setLang(l) {
+    root.setAttribute('data-lang', l);
+    root.setAttribute('lang', l === 'pt' ? 'pt-PT' : 'en');
+    document.querySelectorAll('img[data-alt-pt]').forEach(function (im) {
+      im.alt = im.getAttribute(l === 'pt' ? 'data-alt-pt' : 'data-alt-en');
+    });
+    var b = document.getElementById('lang');
+    b.setAttribute('aria-label', l === 'pt' ? 'Mudar o site para inglês' : 'Switch the site to Portuguese');
+    store('dc-lang', l);
+  }
+  var saved = store('dc-lang');
+  var nav = (navigator.language || 'pt').toLowerCase();
+  setLang(saved === 'pt' || saved === 'en' ? saved : (nav.indexOf('pt') === 0 ? 'pt' : 'en'));
+  document.getElementById('lang').addEventListener('click', function () {
+    setLang(root.getAttribute('data-lang') === 'pt' ? 'en' : 'pt');
+  });
+  function lang() { return root.getAttribute('data-lang'); }
+
+  /* ---------- index preview ---------- */
+  var peek = document.getElementById('peek');
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('.idx-row').forEach(function (a) {
+      a.addEventListener('mouseenter', function () { peek.src = a.getAttribute('data-thumb'); peek.classList.add('on'); });
+      a.addEventListener('mouseleave', function () { peek.classList.remove('on'); });
+      a.addEventListener('mousemove', function (e) {
+        var x = Math.min(e.clientX + 28, window.innerWidth - 280);
+        var y = Math.min(e.clientY - 80, window.innerHeight - (peek.offsetHeight || 200) - 16);
+        peek.style.transform = 'translate(' + x + 'px,' + Math.max(16, y) + 'px)';
+      });
+    });
+  }
+
+  /* ---------- lightbox ---------- */
+  var lb = document.getElementById('lb');
+  var lbImg = document.getElementById('lb-img');
+  var lbTitle = document.getElementById('lb-title');
+  var lbCap = document.getElementById('lb-cap');
+  var lbCount = document.getElementById('lb-count');
+  var group = [], idx = 0, opener = null;
+
+  function show(i) {
+    idx = (i + group.length) % group.length;
+    var b = group[idx], l = lang();
+    lbImg.src = b.getAttribute('data-full');
+    lbImg.alt = b.querySelector('img').alt;
+    lbTitle.textContent = b.getAttribute('data-title-' + l);
+    lbCap.textContent = b.getAttribute('data-cap-' + l);
+    lbCount.textContent = (idx + 1) + ' / ' + group.length;
+    var one = group.length < 2;
+    document.getElementById('lb-prev').hidden = one;
+    document.getElementById('lb-next').hidden = one;
+  }
+  function open(btn) {
+    var g = btn.getAttribute('data-group');
+    group = Array.prototype.slice.call(document.querySelectorAll('.fig[data-group="' + g + '"]'));
+    opener = btn;
+    show(group.indexOf(btn));
+    if (typeof lb.showModal === 'function') lb.showModal(); else lb.setAttribute('open', '');
+    document.getElementById('lb-close').focus();
+  }
+  function close() {
+    if (lb.open && typeof lb.close === 'function') lb.close(); else lb.removeAttribute('open');
+  }
+  lb.addEventListener('close', function () { lbImg.removeAttribute('src'); if (opener) opener.focus(); });
+  document.querySelectorAll('.fig').forEach(function (b) { b.addEventListener('click', function () { open(b); }); });
+  document.getElementById('lb-close').addEventListener('click', close);
+  document.getElementById('lb-prev').addEventListener('click', function () { show(idx - 1); });
+  document.getElementById('lb-next').addEventListener('click', function () { show(idx + 1); });
+  lb.addEventListener('keydown', function (e) {
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(idx - 1); }
+    else if (e.key === 'ArrowRight') { e.preventDefault(); show(idx + 1); }
+    else if (e.key === 'Escape' && !lb.showModal) { close(); }
+  });
+  lbImg.addEventListener('click', function (e) {
+    if (group.length < 2) return;
+    var r = lbImg.getBoundingClientRect();
+    show(e.clientX < r.left + r.width / 2 ? idx - 1 : idx + 1);
+  });
+  var tx = null;
+  lb.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', function (e) {
+    if (tx === null) return;
+    var dx = e.changedTouches[0].clientX - tx; tx = null;
+    if (Math.abs(dx) > 50 && group.length > 1) show(dx < 0 ? idx + 1 : idx - 1);
+  });
+
+  /* ---------- copy email ---------- */
+  var copy = document.getElementById('copy-email');
+  copy.addEventListener('click', function () {
+    var email = copy.getAttribute('data-email');
+    var done = function () {
+      var pt = copy.querySelector('[data-l="pt"]'), en = copy.querySelector('[data-l="en"]');
+      pt.textContent = 'Copiado'; en.textContent = 'Copied';
+      setTimeout(function () { pt.textContent = 'Copiar email'; en.textContent = 'Copy email'; }, 2200);
+    };
+    try {
+      navigator.clipboard.writeText(email).then(done, function () { selectEmail(); });
+    } catch (e) { selectEmail(); }
+  });
+  function selectEmail() {
+    var a = document.querySelector('.email a');
+    var r = document.createRange(); r.selectNodeContents(a);
+    var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+  }
+})();
+
+/* ---------- cursor: red cross ---------- */
+(function () {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+  var root = document.documentElement, layer = document.getElementById('cur-layer');
+  var plus = document.createElement('div'); plus.className = 'c-plus'; plus.appendChild(document.createElement('i'));
+  layer.appendChild(plus); root.classList.add('cur-on'); layer.classList.add('out');
+  var big = false;
+  document.addEventListener('pointermove', function (e) {
+    plus.style.transform = 'translate3d(' + e.clientX + 'px,' + e.clientY + 'px,0)';
+    layer.classList.remove('out');
+    var b = !!(e.target.closest && e.target.closest('a, button, .fig, #lb-img'));
+    if (b !== big) { big = b; plus.classList.toggle('big', b); }
+  }, { passive: true });
+  root.addEventListener('mouseleave', function () { layer.classList.add('out'); });
+  var lb = document.getElementById('lb');
+  new MutationObserver(function () { (lb.open ? lb : document.body).appendChild(layer); }).observe(lb, { attributes: true, attributeFilter: ['open'] });
+})();
+
+</script>
+</body>
+</html>
